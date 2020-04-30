@@ -23,7 +23,7 @@ class AccountSerializer(serializers.HyperlinkedModelSerializer):
         account = Account(**validated_data)
         account.set_password(password)
         account.save()
-        AccountProfile.objects.create(account=account, **account_data)
+        AccountProfile.objects.create(user=account, **account_data)
         return account
 
     def update(self, instance, validated_data):

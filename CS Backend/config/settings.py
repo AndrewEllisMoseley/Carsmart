@@ -27,7 +27,11 @@ SECRET_KEY = '+s=czy5n$pchk62d&6%e525ji^wk6h!$r=uq^(jm_&ve4a4t9t'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '10.0.2.2',
+    'localhost',
+    '127.0.0.1',
+]
 
 AUTH_USER_MODEL = 'account.Account'
 
@@ -44,6 +48,10 @@ INSTALLED_APPS = [
     'rest_framework',
 
     'account',
+    'vehicle',
+    'location',
+    'door',
+    'tyre',
 ]
 
 REST_FRAMEWORK = {
@@ -63,7 +71,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
