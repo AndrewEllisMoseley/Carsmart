@@ -30,7 +30,7 @@ class Vehicle(models.Model):
 
     uuid = models.UUIDField(_('uuid'), primary_key=True, default=uuid.uuid4, editable=False)
     vehicle_id = models.CharField(_('vehicle id'), unique=True, max_length=20, editable=False)
-    registration = models.CharField(_('registration'), max_length=10, editable=False)
+    registration_number = models.CharField(_('registration number'), max_length=10, blank=True, null=True)
     description = models.CharField(_('description'), max_length=50)
     vin = models.CharField(_('vin'), max_length=20)
     model_year = models.CharField(_('model year'), max_length=4)
@@ -41,7 +41,7 @@ class Vehicle(models.Model):
     number_of_seats = models.CharField(_('number of seats'), max_length=2, choices=SEAT_CHOICES)
 
     associated_user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,
-                                           related_name='associated_user')
+                                           related_name='associated_user', null=True, blank=True)
     created_date = models.DateTimeField(_('created date'), auto_now_add=True)
     modified_date = models.DateTimeField(_('modified date'), auto_now_add=True)
 
