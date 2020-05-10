@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/styles/constants.dart';
 
-class SubHeader extends StatelessWidget {
-  SubHeader({@required this.text, this.textColour = kPrimaryColour});
+class CHeader extends StatelessWidget {
+  CHeader({@required this.text, this.textColour = kPrimaryColour});
 
   final text;
   final textColour;
@@ -14,7 +14,7 @@ class SubHeader extends StatelessWidget {
       style: TextStyle(
         color: textColour,
         fontFamily: 'Raleway',
-        fontSize: 32.0,
+        fontSize: 40.0,
         fontWeight: FontWeight.bold,
       ),
     );

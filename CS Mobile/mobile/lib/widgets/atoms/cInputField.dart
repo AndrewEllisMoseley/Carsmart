@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/styles/constants.dart';
 
-class FieldInput extends StatelessWidget {
-  FieldInput({@required this.fieldLabel, this.fieldPlaceholder, this.icon});
+class CInputField extends StatelessWidget {
+  CInputField(
+      {@required this.fieldLabel,
+      this.fieldPlaceholder,
+      this.icon,
+      @required this.fieldController,
+      @required this.validator});
 
-  final fieldLabel;
-  final fieldPlaceholder;
+  final String fieldLabel;
+  final String fieldPlaceholder;
   final Icon icon;
+  final TextEditingController fieldController;
+  final Function validator;
 
   @override
   Widget build(BuildContext context) {

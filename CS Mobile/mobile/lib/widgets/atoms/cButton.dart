@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/styles/constants.dart';
 
-class Button extends StatelessWidget {
-  Button(
+class CButton extends StatelessWidget {
+  CButton(
       {@required this.text,
       @required this.redirect,
       this.backgroundColor = kSecondaryColour,

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:mobile/components/background_card.dart';
-import 'package:mobile/components/button.dart';
-import 'package:mobile/components/field_input.dart';
-import 'package:mobile/components/register_link.dart';
+
+import 'package:mobile/widgets/atoms/cButton.dart';
+import 'package:mobile/widgets/atoms/cInputField.dart';
+import 'package:mobile/widgets/atoms/cLink.dart';
+import 'package:mobile/widgets/molecules/cCard.dart';
 
 class RegisterTwoPage extends StatelessWidget {
   const RegisterTwoPage({Key key}) : super(key: key);
@@ -17,7 +18,7 @@ class RegisterTwoPage extends StatelessWidget {
         child: SafeArea(
           child: Column(
             children: <Widget>[
-              BackgroundCard(
+              CCard(
                 height: 310.0,
                 headerText: headerText,
                 subText: subText,
@@ -26,7 +27,7 @@ class RegisterTwoPage extends StatelessWidget {
                 margin: EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 10.0),
                 child: Column(
                   children: <Widget>[
-                    FieldInput(
+                    CInputField(
                       fieldLabel: 'Company:',
                       fieldPlaceholder: 'Please Select',
                       icon: Icon(Icons.email),
@@ -34,7 +35,7 @@ class RegisterTwoPage extends StatelessWidget {
                     SizedBox(
                       height: 20.0,
                     ),
-                    FieldInput(
+                    CInputField(
                       fieldLabel: 'Job Title:',
                       fieldPlaceholder: 'Please Select',
                       icon: Icon(Icons.pan_tool),
@@ -42,8 +43,8 @@ class RegisterTwoPage extends StatelessWidget {
                     SizedBox(
                       height: 40.0,
                     ),
-                    Button(text: 'NEXT', redirect: '/register-three'),
-                    LoginRegisterLink(
+                    CButton(text: 'NEXT', redirect: '/register-three'),
+                    CLink(
                       text: 'Already have an account? Why not Login?',
                     ),
                   ],

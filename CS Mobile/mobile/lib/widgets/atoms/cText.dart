@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/styles/constants.dart';
 
-class CustomText extends StatelessWidget {
-  CustomText({
+class CText extends StatelessWidget {
+  CText({
     @required this.text,
     this.textColour = kGreyText,
     this.fontSize = 14.0,

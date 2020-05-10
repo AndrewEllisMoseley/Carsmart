@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/styles/constants.dart';
 
-class LoginRegisterLink extends StatelessWidget {
-  LoginRegisterLink({@required this.text});
+class CLink extends StatelessWidget {
+  CLink({@required this.text});
 
   final text;
 

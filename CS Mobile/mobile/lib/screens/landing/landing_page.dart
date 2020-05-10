@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mobile/components/background_card.dart';
-import 'package:mobile/components/button.dart';
+
+import 'package:mobile/widgets/atoms/cButton.dart';
+import 'package:mobile/widgets/molecules/cCard.dart';
 
 class LandingPage extends StatelessWidget {
   const LandingPage({Key key}) : super(key: key);
@@ -19,7 +20,7 @@ class LandingPage extends StatelessWidget {
         child: SafeArea(
           child: Column(
             children: <Widget>[
-              BackgroundCard(
+              CCard(
                 height: 450.0,
                 headerText: headerText,
                 subText: subHeader,
@@ -27,11 +28,11 @@ class LandingPage extends StatelessWidget {
               SizedBox(
                 height: 40.0,
               ),
-              Button(text: 'LOGIN', redirect: '/login'),
+              CButton(text: 'LOGIN', redirect: '/login'),
               SizedBox(
                 height: 30.0,
               ),
-              Button(text: 'REGISTER', redirect: '/register-one'),
+              CButton(text: 'REGISTER', redirect: '/register-one'),
             ],
           ),
         ),

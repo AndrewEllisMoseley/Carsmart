@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:mobile/components/custom_text.dart';
+import 'package:mobile/widgets/atoms/cHeader.dart';
+import 'package:mobile/widgets/atoms/cText.dart';
 
-import 'header.dart';
-
-class BackgroundCard extends StatelessWidget {
-  BackgroundCard(
+class CCard extends StatelessWidget {
+  CCard(
       {@required this.height,
       @required this.headerText,
       @required this.subText});
@@ -15,7 +14,6 @@ class BackgroundCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(headerText[0]);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: <Widget>[
@@ -37,7 +35,7 @@ class BackgroundCard extends StatelessWidget {
                       margin: EdgeInsets.fromLTRB(30.0, 0, 0, 0),
                       child: Align(
                         alignment: Alignment.bottomLeft,
-                        child: Header(
+                        child: CHeader(
                           text: header,
                         ),
                       ),
@@ -47,7 +45,7 @@ class BackgroundCard extends StatelessWidget {
                       margin: EdgeInsets.fromLTRB(30.0, 10.0, 30.0, 20),
                       child: Align(
                         alignment: Alignment.bottomLeft,
-                        child: CustomText(
+                        child: CText(
                           text: text,
                         ),
                       ),

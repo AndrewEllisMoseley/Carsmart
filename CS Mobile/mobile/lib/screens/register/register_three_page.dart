@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:mobile/components/background_card.dart';
-import 'package:mobile/components/button.dart';
-import 'package:mobile/components/field_input.dart';
-import 'package:mobile/components/register_link.dart';
+
+import 'package:mobile/widgets/atoms/cButton.dart';
+import 'package:mobile/widgets/atoms/cInputField.dart';
+import 'package:mobile/widgets/atoms/cLink.dart';
+import 'package:mobile/widgets/molecules/cCard.dart';
 
 class RegisterThreePage extends StatelessWidget {
   const RegisterThreePage({Key key}) : super(key: key);
@@ -17,7 +18,7 @@ class RegisterThreePage extends StatelessWidget {
         child: SafeArea(
           child: Column(
             children: <Widget>[
-              BackgroundCard(
+              CCard(
                 height: 310.0,
                 headerText: headerText,
                 subText: subText,
@@ -26,7 +27,7 @@ class RegisterThreePage extends StatelessWidget {
                 margin: EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 10.0),
                 child: Column(
                   children: <Widget>[
-                    FieldInput(
+                    CInputField(
                       fieldLabel: 'Email:',
                       fieldPlaceholder: 'Example@email.com',
                       icon: Icon(Icons.email),
@@ -34,7 +35,7 @@ class RegisterThreePage extends StatelessWidget {
                     SizedBox(
                       height: 20.0,
                     ),
-                    FieldInput(
+                    CInputField(
                       fieldLabel: 'Password:',
                       fieldPlaceholder: 'Password',
                       icon: Icon(Icons.security),
@@ -42,8 +43,8 @@ class RegisterThreePage extends StatelessWidget {
                     SizedBox(
                       height: 40.0,
                     ),
-                    Button(text: 'REGISTER', redirect: '/vehicle-details'),
-                    LoginRegisterLink(
+                    CButton(text: 'REGISTER', redirect: '/vehicle-details'),
+                    CLink(
                       text: 'Already have an account? Why not Login?',
                     ),
                   ],
