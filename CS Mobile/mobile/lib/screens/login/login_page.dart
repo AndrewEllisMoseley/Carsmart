@@ -10,6 +10,8 @@ class LoginPage extends StatelessWidget {
 
   static const headerText = ['Login'];
   static const subText = ['Enter to following details to get access.'];
+
+  static const Key login = Key('login');
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +49,10 @@ class LoginPage extends StatelessWidget {
                     SizedBox(
                       height: 40.0,
                     ),
-                    CButton(text: 'LOGIN', redirect: '/vehicle-details'),
+                    CButton(
+                        text: 'LOGIN',
+                        redirect: '/vehicle-details',
+                        key: Key('login')),
                     CLink(
                       text: 'Don\'t have an account? Register for one!',
                     ),
