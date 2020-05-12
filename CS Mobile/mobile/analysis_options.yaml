@@ -8,44 +8,12 @@ analyzer:
 
 linter:
   rules:
+    - annotate_overrides
+    - await_only_futures
     - camel_case_types
-
-static_analysis: &static_analysis
-  name: "Static analysis"
-  script: flutter analyze --no-current-package $TRAVIS_BUILD_DIR/lib
-
-# Unit Tests
-unit_tests: &unit_tests
-  name: "Unit tests"
-  script: flutter test test/unit_test.dart
-
-# Unit Test Coverage
-# unit_tests: &unit_tests
-#   name: "Unit tests"
-#   script: flutter test --coverage test/unit_test.dart
-#   after_script: bash <(curl -s https://codecov.io/bash) -f coverage/lcov.info
-
-# Widget Tests
-widget_tests: &widget_tests
-  name: "Widget tests"
-  script: flutter test
-
-# Widget Test Coverage
-# widget_tests: &widget_tests
-#   name: "Widget tests"
-#   script: flutter test --coverage test/widget_test.dart
-#   after_script: bash <(curl -s https://codecov.io/bash) -f coverage/lcov.info
-
-# Integration Tests
-integration_tests: &integration_tests
-  name: "Integration tests"
-  script: flutter drive --target=test_driver/app.dart
-
-jobs:
-  include:
-    - <<: *static_analysis
-    - <<: *unit_tests
-    - <<: *widget_tests
-    - <<: *integration_tests
-    - stage: build
-    - stage: deploy
+    - cancel_subscriptions
+    - close_sinks
+    - comment_references
+    - constant_identifier_names
+    - control_flow_in_finally
+    - empty_statements
