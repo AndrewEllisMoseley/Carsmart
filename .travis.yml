@@ -8,12 +8,15 @@ env:
   global:
     - FLUTTER_CHANNEL=stable
 
+before_script: cd "CS Mobile/mobile"
+
 install:
   - git clone https://github.com/flutter/flutter.git -b $FLUTTER_CHANNEL
   - export PATH="$PATH:`pwd`/flutter/bin/cache/dart-sdk/bin"
   - export PATH="$PATH:`pwd`/flutter/bin"
   - flutter doctor -v
   - flutter packages get
+
 cache:
   directories:
     - $HOME/.pub-cache
