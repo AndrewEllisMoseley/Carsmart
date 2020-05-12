@@ -22,15 +22,15 @@ void main() {
       print(health.status);
     });
 
-    Future<void> delay([int milliseconds = 250]) async {
-      await Future<void>.delayed(Duration(milliseconds: milliseconds));
-    }
+    // Future<void> delay([int milliseconds = 250]) async {
+    //   await Future<void>.delayed(Duration(milliseconds: milliseconds));
+    // }
 
-    test('sign in anonymously, sign out', () async {
-      await driver.tap(find.text('Login'));
-      // print('About you click login');
-      // await driver.tap(find.text('Login'));
-      print('Login clicked');
-    });
+    // test('sign in anonymously, sign out', () async {
+    //   await driver.tap(find.text('Login'));
+    //   // print('About you click login');
+    //   // await driver.tap(find.text('Login'));
+    //   print('Login clicked');
+    // });
   });
 }
