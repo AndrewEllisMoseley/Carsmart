@@ -1,22 +1,45 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:mobile/screens/account/account_page.dart';
+import 'package:mobile/screens/request/request_page.dart';
 
 import 'package:mobile/styles/constants.dart';
 import 'package:mobile/widgets/atoms/cHeader.dart';
 import 'package:mobile/widgets/templates/cVehicleDetailsTemplate.dart';
 
-class VehicleDetailsPage extends StatelessWidget {
+class VehicleDetailsPage extends StatefulWidget {
   const VehicleDetailsPage({Key key}) : super(key: key);
 
   static Completer<GoogleMapController> _controller = Completer();
 
   static const LatLng _center = const LatLng(45.521563, -122.677433);
 
+  @override
+  _VehicleDetailsPageState createState() => _VehicleDetailsPageState();
+}
+
+class _VehicleDetailsPageState extends State<VehicleDetailsPage> {
   void _onMapCreated(GoogleMapController controller) {
-    _controller.complete(controller);
+    VehicleDetailsPage._controller.complete(controller);
+  }
+
+  int _selectedIndex = 1;
+  static const TextStyle optionStyle =
+      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  static List<Widget> _widgetOptions = <Widget>[
+    RequestPage(),
+    CVehicleDetailsTemplate(),
+    Text('Access Page'),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
   }
 
   @override
@@ -39,46 +62,39 @@ class VehicleDetailsPage extends StatelessWidget {
                 size: 45.0,
               ),
               onPressed: () {
-                // do something
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ProfilePage(),
+                  ),
+                );
               },
             ),
           )
         ],
       ),
-      body: CVehicleDetailsTemplate(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: BottomAppBar(
-        shape: CircularNotchedRectangle(),
-        child: Container(
-          height: 75,
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              IconButton(
-                color: kLightGreyText,
-                iconSize: 30.0,
-                padding: EdgeInsets.only(left: 28.0),
-                icon: Icon(Icons.notifications),
-                onPressed: () {},
-              ),
-              IconButton(
-                color: kPrimaryColour,
-                iconSize: 30.0,
-                padding: EdgeInsets.only(left: 0.0),
-                icon: Icon(Icons.view_headline),
-                onPressed: () {},
-              ),
-              IconButton(
-                color: kLightGreyText,
-                iconSize: 30.0,
-                padding: EdgeInsets.only(right: 28.0),
-                icon: Icon(Icons.card_travel),
-                onPressed: () {},
-              ),
-            ],
+      body: Center(
+        child: _widgetOptions.elementAt(_selectedIndex),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(FontAwesomeIcons.conciergeBell),
+            title: Text('Request'),
           ),
-        ),
+          BottomNavigationBarItem(
+            icon: Icon(FontAwesomeIcons.car),
+            title: Text('Your vehicle'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(FontAwesomeIcons.carBattery),
+            title: Text('Access'),
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: kPrimaryColour,
+        selectedIconTheme: IconThemeData(size: 30.0),
+        onTap: _onItemTapped,
       ),
     );
   }

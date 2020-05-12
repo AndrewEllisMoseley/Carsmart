@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/screens/vehicle/vehicle_location.dart';
 
 import 'package:mobile/styles/constants.dart';
 import 'package:mobile/widgets/molecules/cHero.dart';
@@ -15,8 +16,8 @@ class CVehicleDetailsTemplate extends StatelessWidget {
             elevation: 10.0,
             color: kWhiteText,
             child: Container(
-              margin: EdgeInsets.fromLTRB(20.0, 0, 0, 0),
-              height: 460,
+              margin: EdgeInsets.fromLTRB(20.0, 10, 20.0, 0),
+              height: MediaQuery.of(context).size.height * 0.68,
               width: double.infinity,
               color: Colors.white,
               child: Column(
@@ -46,7 +47,17 @@ class CVehicleDetailsTemplate extends StatelessWidget {
                 ),
               ],
             ),
-            child: Image.asset('lib/assets/map.jpg'),
+            child: RawMaterialButton(
+              child: Image.asset('lib/assets/map.jpg'),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => VehicleLocationPage(),
+                  ),
+                );
+              },
+            ),
           ),
         ],
       ),

@@ -19,7 +19,7 @@ class CHero extends StatelessWidget {
           fontWeight: FontWeight.bold,
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(0.0, 20.0, 20.0, 0),
+          padding: const EdgeInsets.fromLTRB(0, 20.0, 0, 10),
           child: Divider(
             color: kGreyText,
           ),

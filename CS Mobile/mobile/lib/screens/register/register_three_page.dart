@@ -19,7 +19,7 @@ class RegisterThreePage extends StatelessWidget {
           child: Column(
             children: <Widget>[
               CCard(
-                height: 310.0,
+                height: MediaQuery.of(context).size.height * 0.45,
                 headerText: headerText,
                 subText: subText,
               ),

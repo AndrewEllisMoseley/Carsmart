@@ -10,7 +10,7 @@ class CRegistrationBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(0, 20.0, 0, 10.0),
+      padding: const EdgeInsets.fromLTRB(0, 30.0, 0, 10.0),
       child: Center(
         child: Container(
           width: 160.0,
