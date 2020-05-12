@@ -16,8 +16,10 @@ void main() {
 
   testWidgets("Atom - CButton shown", (WidgetTester tester) async {
     //  given
+    const Key key = Key('login');
     final widget = CButton(
       text: 'Login',
+      key: key,
       redirect: null,
     );
 
@@ -30,8 +32,10 @@ void main() {
 
   testWidgets("Atom - CButton shown with 'Login'", (WidgetTester tester) async {
     //  given
+    const Key key = Key('login');
     final widget = CButton(
       text: 'Login',
+      key: key,
       redirect: null,
     );
 
@@ -45,8 +49,10 @@ void main() {
   testWidgets("Atom - CButton check default styles are applied",
       (WidgetTester tester) async {
     //  given
+    const Key key = Key('login');
     final widget = CButton(
       text: 'Test header',
+      key: key,
       redirect: null,
     );
 
@@ -68,8 +74,10 @@ void main() {
   testWidgets("Atom - CButton check custom styles are applied",
       (WidgetTester tester) async {
     //  given
+    const Key key = Key('login');
     final widget = CButton(
       text: 'Test header',
+      key: key,
       redirect: null,
       textColour: kPrimaryColour,
       backgroundColor: kWhiteText,

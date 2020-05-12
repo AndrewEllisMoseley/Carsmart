@@ -1,4 +1,3 @@
-// Imports the Flutter Driver API.
 import 'package:flutter_driver/flutter_driver.dart';
 import 'package:test/test.dart';
 
@@ -21,6 +20,17 @@ void main() {
     test('check flutter driver health', () async {
       Health health = await driver.checkHealth();
       print(health.status);
+    });
+
+    Future<void> delay([int milliseconds = 250]) async {
+      await Future<void>.delayed(Duration(milliseconds: milliseconds));
+    }
+
+    test('sign in anonymously, sign out', () async {
+      await driver.tap(find.text('Login'));
+      // print('About you click login');
+      // await driver.tap(find.text('Login'));
+      print('Login clicked');
     });
   });
 }

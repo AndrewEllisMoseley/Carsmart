@@ -17,8 +17,8 @@ class CInputField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
+    return SafeArea(
+      child: Material(
         child: TextFormField(
           // controller: usernameController,
           keyboardType: TextInputType.text,
