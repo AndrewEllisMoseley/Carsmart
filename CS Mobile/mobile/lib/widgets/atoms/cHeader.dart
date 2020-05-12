@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:mobile/styles/constants.dart';
 
 class CHeader extends StatelessWidget {
-  CHeader({@required this.text, this.textColour = kPrimaryColour});
+  final String text;
+  final Color textColour;
 
-  final text;
-  final textColour;
+  CHeader({@required this.text, this.textColour = kPrimaryColour});
 
   @override
   Widget build(BuildContext context) {

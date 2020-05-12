@@ -8,7 +8,7 @@ const kLightGreyText = Color(0xFFDCDCDC);
 const kBlackText = Color(0xFF000000);
 const kWhiteText = Color(0xFFFFFFFF);
 
-dynamic kTextFieldInputDecoration(
+InputDecoration kTextFieldInputDecoration(
     String labelText, String hintText, Icon icon) {
   return InputDecoration(
     labelText: labelText,
