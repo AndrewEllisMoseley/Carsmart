@@ -1,29 +1,18 @@
-# Foobar
+[![Build Status](https://travis-ci.org/AndrewEllisMoseley/Carsmart.svg?branch=master)](https://travis-ci.org/AndrewEllisMoseley/Carsmart)
+# Carsmart
 
-Foobar is a Python library for dealing with word pluralization.
+Coming Soon
 
 ## Installation
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
-
-```bash
-pip install foobar
-```
+Coming Soon
 
 ## Usage
 
-```python
-import foobar
-
-foobar.pluralize('word') # returns 'words'
-foobar.pluralize('goose') # returns 'geese'
-foobar.singularize('phenomena') # returns 'phenomenon'
-```
+Coming Soon
 
 ## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-Please make sure to update tests as appropriate.
+Coming Soon
 
 ## License
-[MIT](https://choosealicense.com/licenses/mit/)
