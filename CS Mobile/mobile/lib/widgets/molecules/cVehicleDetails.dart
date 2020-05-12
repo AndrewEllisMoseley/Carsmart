@@ -24,9 +24,9 @@ class CVehicleDetails extends StatelessWidget {
                     text: 'Details',
                   ),
                   onTap: () {
-                    Navigator.push(
+                    Navigator.push<dynamic>(
                       context,
-                      MaterialPageRoute(
+                      MaterialPageRoute<dynamic>(
                         builder: (context) => VehicleOverviewPage(),
                       ),
                     );

@@ -50,9 +50,9 @@ class CVehicleDetailsTemplate extends StatelessWidget {
             child: RawMaterialButton(
               child: Image.asset('lib/assets/map.jpg'),
               onPressed: () {
-                Navigator.push(
+                Navigator.push<dynamic>(
                   context,
-                  MaterialPageRoute(
+                  MaterialPageRoute<dynamic>(
                     builder: (context) => VehicleLocationPage(),
                   ),
                 );

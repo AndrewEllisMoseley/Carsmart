@@ -62,9 +62,9 @@ class _VehicleDetailsPageState extends State<VehicleDetailsPage> {
                 size: 45.0,
               ),
               onPressed: () {
-                Navigator.push(
+                Navigator.push<dynamic>(
                   context,
-                  MaterialPageRoute(
+                  MaterialPageRoute<dynamic>(
                     builder: (context) => ProfilePage(),
                   ),
                 );

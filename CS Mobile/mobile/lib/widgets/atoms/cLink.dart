@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:mobile/styles/constants.dart';
 
 class CLink extends StatelessWidget {
-  CLink({@required this.text});
+  final String text;
 
-  final text;
+  CLink({@required this.text});
 
   @override
   Widget build(BuildContext context) {
