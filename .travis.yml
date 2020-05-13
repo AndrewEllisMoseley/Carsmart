@@ -8,6 +8,15 @@ addons:
     packages:
       - libstdc++6
 
+before_install: cd "CS Mobile/mobile/"
+
+install:
+  - git clone https://github.com/flutter/flutter.git -b $FLUTTER_CHANNEL
+  - export PATH="$PATH:`pwd`/flutter/bin/cache/dart-sdk/bin"
+  - export PATH="$PATH:`pwd`/flutter/bin"
+  - flutter doctor -v
+  - flutter packages get
+
 jobs:
   include:
     - stage: analyze
@@ -28,5 +37,6 @@ branches:
     - develop
 
 cache:
+  bundler: true
   directories:
     - "$HOME/.pub-cache"
