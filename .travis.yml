@@ -1,95 +1,30 @@
 language: dart
 dist: xenial
 
+# Custom configuration
+sudo: required
 addons:
-  sudo: required
-  chrome: stable
   apt:
     packages:
       - libstdc++6
 env:
-  global:
-    - FLUTTER_CHANNEL=stable
-    - APP=mobile
-    - ANDROID_API=28
-
-before_install: cd "CS Mobile/mobile/"
-
-install:
-  - git clone https://github.com/flutter/flutter.git -b $FLUTTER_CHANNEL
-  - export PATH="$PATH:`pwd`/flutter/bin/cache/dart-sdk/bin"
-  - export PATH="$PATH:`pwd`/flutter/bin"
-  - flutter doctor -v
-  - flutter packages get
-
-static_analysis: &static_analysis
-  name: "Static analysis"
-  script: flutter analyze --no-current-package lib
-
-# Unit Tests
-unit_tests: &unit_tests
-  name: "Unit tests"
-  script: flutter test test/unit_test.dart
-
-# Unit Test Coverage
-unit_tests: &unit_tests
-  name: "Unit tests"
-  script: flutter test --coverage test/unit_test.dart
-  after_script: bash <(curl -s https://codecov.io/bash) -f coverage/lcov.info
-
-# Widget Tests
-widget_tests: &widget_tests
-  name: "Widget tests"
-  script: flutter test
-
-# Widget Test Coverage
-# widget_tests: &widget_tests
-#   name: "Widget tests"
-#   script: flutter test --coverage
-#   after_script: bash <(curl -s https://codecov.io/bash) -f coverage/lcov.info
-
-# Integration Tests
-integration_tests: &integration_tests
-  name: "Integration tests"
-  language: android
-  dist: trusty
-  android:
-    components:
-      - tools
-      - platform-tools
-      - build-tools-28.0.3
-      - android-28
-      - android-24
-      - android-22
-      - extra-google-google_play_services
-      - extra-google-m2repository
-      - extra-android-m2repository
-      - sys-img-armeabi-v7a-android-22
-  licenses:
-    - "android-sdk-preview-license-52d11cd2"
-    - "android-sdk-license-.+"
-    - "google-gdk-license-.+"
-  before_install:
-    - yes | sdkmanager "platforms;android-28"
-    - echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a -c 32M
-    - emulator -avd test -no-audio -no-window &
-    - android-wait-for-emulator
-    - adb devices
-    - adb shell input keyevent 82 &
-  script:
-    - cd "CS Mobile/mobile/"
-    # - $FLUTTER --version
-    # - $FLUTTER doctor
-    - $FLUTTER_UP devices
-    - $FLUTTER_UP driver --target=test_driver/app.dart
+  - TEST_SUITE=analyze
+  - TEST_SUITE=widget
 
 jobs:
   include:
-    - <<: *widget_tests
-    - <<: *static_analysis
-    # - <<: *unit_tests
-    # - <<: *integration_tests    
+    - stage: analyze
+      name: "Static analysis"
+      script: "bundle exec rake analyze:$TEST_SUITE"   
+    - stage: widgets
+      name: "Widget tests"                  
+      script: "bundle exec rake widget:$TEST_SUITE"
 
+stages:
+  - analyze
+  - widgett
+
+# Only building master means that we don't run two builds for each pull request.
 branches:
   only:
     - master
