@@ -12,32 +12,18 @@ env:
     - FLUTTER_CHANNEL=stable
     - APP=mobile
     - ANDROID_API=28
-    
-android:
-  components:
-    - tools
-    - platform-tools
-    - build-tools-28.0.3
-    - android-28
-    - android-24
-    - android-22
-    - extra-google-google_play_services
-    - extra-google-m2repository
-    - extra-android-m2repository
-    - sys-img-armeabi-v7a-android-22
-  licenses:
-    - "android-sdk-preview-license-52d11cd2"
-    - "android-sdk-license-.+"
-    - "google-gdk-license-.+"  
-    
+
 before_install: 
   - cd "CS Mobile/mobile/"  
-  - yes | sdkmanager "platforms;android-28"
-  - echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a -c 32M
-  - emulator -avd test -no-audio -no-window &
-  - android-wait-for-emulator
-  - adb devices
-  - adb shell input keyevent 82 &
+
+after_install:
+  - cd ../../
+
+before_script:
+  - cd "CS Mobile/mobile/"  
+
+after_script:
+  - cd ../../
 
 install:
   - git clone https://github.com/flutter/flutter.git -b $FLUTTER_CHANNEL
@@ -63,7 +49,30 @@ jobs:
     - stage: "Integration Tests"
       name: "Integration tests.."
       language: android
-      dist: trusty          
+      dist: trusty   
+      android:
+        components:
+          - tools
+          - platform-tools
+          - build-tools-28.0.3
+          - android-28
+          - android-24
+          - android-22
+          - extra-google-google_play_services
+          - extra-google-m2repository
+          - extra-android-m2repository
+          - sys-img-armeabi-v7a-android-22
+      licenses:
+        - "android-sdk-preview-license-52d11cd2"
+        - "android-sdk-license-.+"
+        - "google-gdk-license-.+"
+      before_install:
+        - yes | sdkmanager "platforms;android-28"
+        - echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a -c 32M
+        - emulator -avd test -no-audio -no-window &
+        - android-wait-for-emulator
+        - adb devices
+        - adb shell input keyevent 82 &
       script:
         - $FLUTTER_UP devices
         - $FLUTTER_UP driver --target=test_driver/app.dart
