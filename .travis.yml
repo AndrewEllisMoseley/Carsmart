@@ -86,7 +86,7 @@ jobs:
     - <<: *static_analysis
     # - <<: *unit_tests
     - <<: *widget_tests
-    - <<: *integration_tests
+    # - <<: *integration_tests
     # - stage: build
     # - stage: deploy
 cache:

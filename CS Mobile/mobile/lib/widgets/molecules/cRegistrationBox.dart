@@ -3,9 +3,9 @@ import 'package:mobile/styles/styles.dart';
 import 'package:mobile/widgets/atoms/cText.dart';
 
 class CRegistrationBox extends StatelessWidget {
-  final String registration;
-
   CRegistrationBox({@required this.registration});
+
+  final String registration;
 
   @override
   Widget build(BuildContext context) {
