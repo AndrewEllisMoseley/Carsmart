@@ -8,8 +8,10 @@ import 'package:mobile/widgets/molecules/cCard.dart';
 class RegisterThreePage extends StatelessWidget {
   const RegisterThreePage({Key key}) : super(key: key);
 
-  static const headerText = ['Register'];
-  static const subText = ['Enter to following details to get access.'];
+  static const List<String> headerText = ['Register'];
+  static const List<String> subText = [
+    'Enter to following details to get access.'
+  ];
 
   static const Key registerKey = Key('register');
 

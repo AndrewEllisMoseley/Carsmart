@@ -9,8 +9,8 @@ class CCard extends StatelessWidget {
       @required this.subText});
 
   final double height;
-  final dynamic headerText;
-  final dynamic subText;
+  final List<String> headerText;
+  final List<String> subText;
 
   @override
   Widget build(BuildContext context) {

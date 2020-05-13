@@ -6,8 +6,8 @@ import 'package:mobile/widgets/molecules/cCard.dart';
 class LandingPage extends StatelessWidget {
   const LandingPage({Key key}) : super(key: key);
 
-  static const headerText = ['LET\'S GET', 'STARTED'];
-  static const subHeader = [
+  static const List<String> headerText = ['LET\'S GET', 'STARTED'];
+  static const List<String> subHeader = [
     'Registration takes less than a minute - you just need the company you work for and your job title.',
     'If you have an existing Carsmart account, then just log in with your usual details.'
   ];
