@@ -1,32 +1,21 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:mobile/screens/account/account_page.dart';
 import 'package:mobile/screens/request/request_page.dart';
 
-import 'package:mobile/styles/constants.dart';
+import 'package:mobile/styles/styles.dart';
 import 'package:mobile/widgets/atoms/cHeader.dart';
 import 'package:mobile/widgets/templates/cVehicleDetailsTemplate.dart';
 
 class VehicleDetailsPage extends StatefulWidget {
   const VehicleDetailsPage({Key key}) : super(key: key);
 
-  static Completer<GoogleMapController> _controller = Completer();
-
-  static const LatLng _center = const LatLng(45.521563, -122.677433);
-
   @override
   _VehicleDetailsPageState createState() => _VehicleDetailsPageState();
 }
 
 class _VehicleDetailsPageState extends State<VehicleDetailsPage> {
-  void _onMapCreated(GoogleMapController controller) {
-    VehicleDetailsPage._controller.complete(controller);
-  }
-
   int _selectedIndex = 1;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
@@ -62,9 +51,9 @@ class _VehicleDetailsPageState extends State<VehicleDetailsPage> {
                 size: 45.0,
               ),
               onPressed: () {
-                Navigator.push(
+                Navigator.push<dynamic>(
                   context,
-                  MaterialPageRoute(
+                  MaterialPageRoute<dynamic>(
                     builder: (context) => ProfilePage(),
                   ),
                 );

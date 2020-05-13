@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter/material.dart';
-import 'package:mobile/styles/constants.dart';
+import 'package:mobile/styles/styles.dart';
 import 'package:mobile/widgets/atoms/cHeader.dart';
 
 import '../TestMaterialAppWidget.dart';

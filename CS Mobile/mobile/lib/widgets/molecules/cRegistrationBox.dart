@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:mobile/styles/constants.dart';
+import 'package:mobile/styles/styles.dart';
 import 'package:mobile/widgets/atoms/cText.dart';
 
 class CRegistrationBox extends StatelessWidget {
-  CRegistrationBox({@required this.registration});
-
   final String registration;
+
+  CRegistrationBox({@required this.registration});
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +14,9 @@ class CRegistrationBox extends StatelessWidget {
       child: Center(
         child: Container(
           width: 160.0,
-          decoration: new BoxDecoration(
+          decoration: BoxDecoration(
             color: Colors.white,
-            borderRadius: new BorderRadius.circular(5.0),
+            borderRadius: BorderRadius.circular(5.0),
             boxShadow: [
               BoxShadow(
                 color: Colors.grey.withOpacity(0.5),

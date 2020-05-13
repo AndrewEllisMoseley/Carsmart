@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:mobile/screens/account/account_page.dart';
-import 'package:mobile/styles/constants.dart';
+import 'package:mobile/styles/styles.dart';
 import 'package:mobile/services/locations.dart' as locations;
 
 class VehicleLocationPage extends StatefulWidget {
@@ -57,9 +57,9 @@ class _VehicleLocationPageState extends State<VehicleLocationPage> {
                   size: 45.0,
                 ),
                 onPressed: () {
-                  Navigator.push(
+                  Navigator.push<dynamic>(
                     context,
-                    MaterialPageRoute(
+                    MaterialPageRoute<dynamic>(
                       builder: (context) => ProfilePage(),
                     ),
                   );

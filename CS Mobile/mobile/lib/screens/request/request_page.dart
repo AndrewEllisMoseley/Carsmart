@@ -15,6 +15,8 @@ class RequestPage extends StatefulWidget {
 }
 
 class _RequestPageState extends State<RequestPage> {
+  static const Key submitKey = Key('submit');
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -30,22 +32,22 @@ class _RequestPageState extends State<RequestPage> {
             CInputField(
               fieldLabel: 'Reason for vehicle:',
               fieldController: null,
-              validator: null,
+              validator: () {},
             ),
             CInputField(
               fieldLabel: 'Start date:',
               fieldController: null,
-              validator: null,
+              validator: () {},
             ),
             CInputField(
               fieldLabel: 'Number of dates required:',
               fieldController: null,
-              validator: null,
+              validator: () {},
             ),
             CInputField(
               fieldLabel: 'Reason:',
               fieldController: null,
-              validator: null,
+              validator: () {},
             ),
             CText(
               text: 'Requests can take up to 24 hours.',
@@ -53,6 +55,7 @@ class _RequestPageState extends State<RequestPage> {
             CButton(
               text: 'Submit',
               redirect: null,
+              key: submitKey,
             ),
           ],
         ),
