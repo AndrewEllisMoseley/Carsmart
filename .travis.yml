@@ -10,6 +10,7 @@ addons:
 env:
   global:
     - FLUTTER_CHANNEL=stable
+    - FLUTTER_UP=../flutter/bin/flutter
     - APP=mobile
     - ANDROID_API=28
 
