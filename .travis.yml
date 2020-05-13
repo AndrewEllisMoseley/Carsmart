@@ -7,18 +7,15 @@ addons:
   apt:
     packages:
       - libstdc++6
-env:
-  - TEST_SUITE=analyze
-  - TEST_SUITE=widget
 
 jobs:
   include:
     - stage: analyze
       name: "Static analysis"
-      script: "bundle exec rake analyze:$TEST_SUITE"   
+      script: flutter analyze --no-current-package lib  
     - stage: widgets
       name: "Widget tests"                  
-      script: "bundle exec rake widget:$TEST_SUITE"
+      script: flutter test
 
 stages:
   - analyze
