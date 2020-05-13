@@ -32,9 +32,9 @@ jobs:
       name: "Checking widgets..."                  
       script: flutter test
       
-    - stage: "Unit Test"  
-      name: "Checking functions..."
-      script: flutter test test/unit_test.dart
+#     - stage: "Unit Test"  
+#       name: "Checking functions..."
+#       script: flutter test test/unit_test.dart
     
     - stage: "Integration Tests"
       name: "Integration tests.."
@@ -70,10 +70,10 @@ jobs:
         - $FLUTTER_UP devices
         - $FLUTTER_UP driver --target=test_driver/app.dart
       
-    - stage: "Widget Test Coverage"
-      name: "Creating widget test coverage..."                  
-      script: flutter test --coverage
-      after_script: bash <(curl -s https://codecov.io/bash) -f coverage/lcov.info  
+#     - stage: "Widget Test Coverage"
+#       name: "Creating widget test coverage..."                  
+#       script: flutter test --coverage
+#       after_script: bash <(curl -s https://codecov.io/bash) -f coverage/lcov.info  
       
     - stage: "Unit Test Coverage"
       name: "Creating unit test coverage..."                  
