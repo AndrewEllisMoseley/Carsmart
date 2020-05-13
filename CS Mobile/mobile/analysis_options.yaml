@@ -1,12 +1,14 @@
 include: package:pedantic/analysis_options.1.8.0.yaml
 
 analyzer:
-  exclude:
-    - build/**
-    - lib/services/locations.**
   strong-mode:
     implicit-casts: false
     implicit-dynamic: false
+  exclude:
+    - build/**
+    - "**/*.g.dart"
+    - "**/locations.dart"
+
   errors:
     missing_required_param: warning
     missing_return: warning
