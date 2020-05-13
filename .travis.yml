@@ -87,9 +87,10 @@ integration_tests: &integration_tests
 
 jobs:
   include:
+    - stage: "Tests"
     - <<: *static_analysis
     # - <<: *unit_tests
     - <<: *widget_tests
     # - <<: *integration_tests
-    # - stage: build
-    # - stage: deploy
+    - stage: "Build"
+    - stage: "Deploy"
