@@ -12,6 +12,9 @@ class LandingPage extends StatelessWidget {
     'If you have an existing Carsmart account, then just log in with your usual details.'
   ];
 
+  static const Key loginKey = Key('login');
+  static const Key registerKey = Key('register');
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,11 +31,19 @@ class LandingPage extends StatelessWidget {
               SizedBox(
                 height: 40.0,
               ),
-              CButton(text: 'LOGIN', redirect: '/login'),
+              CButton(
+                text: 'LOGIN',
+                redirect: '/login',
+                key: loginKey,
+              ),
               SizedBox(
                 height: 30.0,
               ),
-              CButton(text: 'REGISTER', redirect: '/register-one'),
+              CButton(
+                text: 'REGISTER',
+                redirect: '/register-one',
+                key: registerKey,
+              ),
             ],
           ),
         ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/screens/vehicle/vehicle_location.dart';
 
-import 'package:mobile/styles/constants.dart';
+import 'package:mobile/styles/styles.dart';
 import 'package:mobile/widgets/molecules/cHero.dart';
 import 'package:mobile/widgets/molecules/cRegistrationBox.dart';
 import 'package:mobile/widgets/molecules/cVehicleDetails.dart';

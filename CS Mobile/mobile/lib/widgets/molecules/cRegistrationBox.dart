@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobile/styles/constants.dart';
+import 'package:mobile/styles/styles.dart';
 import 'package:mobile/widgets/atoms/cText.dart';
 
 class CRegistrationBox extends StatelessWidget {

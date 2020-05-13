@@ -10,6 +10,9 @@ class RegisterThreePage extends StatelessWidget {
 
   static const headerText = ['Register'];
   static const subText = ['Enter to following details to get access.'];
+
+  static const Key registerKey = Key('register');
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,6 +34,8 @@ class RegisterThreePage extends StatelessWidget {
                       fieldLabel: 'Email:',
                       fieldPlaceholder: 'Example@email.com',
                       icon: Icon(Icons.email),
+                      fieldController: null,
+                      validator: () {},
                     ),
                     SizedBox(
                       height: 20.0,
@@ -39,11 +44,17 @@ class RegisterThreePage extends StatelessWidget {
                       fieldLabel: 'Password:',
                       fieldPlaceholder: 'Password',
                       icon: Icon(Icons.security),
+                      fieldController: null,
+                      validator: () {},
                     ),
                     SizedBox(
                       height: 40.0,
                     ),
-                    CButton(text: 'REGISTER', redirect: '/vehicle-details'),
+                    CButton(
+                      text: 'REGISTER',
+                      redirect: '/vehicle-details',
+                      key: registerKey,
+                    ),
                     CLink(
                       text: 'Already have an account? Why not Login?',
                     ),

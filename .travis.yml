@@ -24,20 +24,20 @@ cache:
   directories:
     - $HOME/.pub-cache
 
-# static_analysis: &static_analysis
-#   name: "Static analysis"
-#   script: flutter analyze --no-current-package $TRAVIS_BUILD_DIR/lib
+static_analysis: &static_analysis
+  name: "Static analysis"
+  script: flutter analyze
 
 # Unit Tests
-# unit_tests: &unit_tests
-#   name: "Unit tests"
-#   script: flutter test test/unit_test.dart
+unit_tests: &unit_tests
+  name: "Unit tests"
+  script: flutter test test/unit_test.dart
 
 # Unit Test Coverage
-# unit_tests: &unit_tests
-#   name: "Unit tests"
-#   script: flutter test --coverage test/unit_test.dart
-#   after_script: bash <(curl -s https://codecov.io/bash) -f coverage/lcov.info
+unit_tests: &unit_tests
+  name: "Unit tests"
+  script: flutter test --coverage test/unit_test.dart
+  after_script: bash <(curl -s https://codecov.io/bash) -f coverage/lcov.info
 
 # Widget Tests
 widget_tests: &widget_tests
@@ -45,10 +45,10 @@ widget_tests: &widget_tests
   script: flutter test
 
 # Widget Test Coverage
-# widget_tests: &widget_tests
-#   name: "Widget tests"
-#   script: flutter test --coverage test/widget_test.dart
-#   after_script: bash <(curl -s https://codecov.io/bash) -f coverage/lcov.info
+widget_tests: &widget_tests
+  name: "Widget tests"
+  script: flutter test --coverage test/widget_test.dart
+  after_script: bash <(curl -s https://codecov.io/bash) -f coverage/lcov.info
 
 # Integration Tests
 integration_tests: &integration_tests
@@ -68,9 +68,9 @@ integration_tests: &integration_tests
       - extra-android-m2repository
       - sys-img-armeabi-v7a-android-22
   licenses:
-    - 'android-sdk-preview-license-52d11cd2'
-    - 'android-sdk-license-.+'
-    - 'google-gdk-license-.+'
+    - "android-sdk-preview-license-52d11cd2"
+    - "android-sdk-license-.+"
+    - "google-gdk-license-.+"
   before_install:
     - yes | sdkmanager "platforms;android-28"
     - echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a -c 32M
@@ -80,16 +80,16 @@ integration_tests: &integration_tests
     - adb shell input keyevent 82 &
   script:
     - cd "CS Mobile/mobile/"
-    - $FLUTTER --version
-    - $FLUTTER doctor    
+    # - $FLUTTER --version
+    # - $FLUTTER doctor
     - $FLUTTER_UP devices
     - $FLUTTER_UP driver --target=test_driver/app.dart
 
 jobs:
   include:
-    # - <<: *static_analysis
+    - <<: *static_analysis
     # - <<: *unit_tests
     - <<: *widget_tests
-    # - <<: *integration_tests
+    - <<: *integration_tests
     # - stage: build
     # - stage: deploy
