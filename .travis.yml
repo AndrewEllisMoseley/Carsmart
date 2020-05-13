@@ -24,16 +24,16 @@ install:
 
 jobs:
   include:
-    - stage: analyze
+    - stage: "Analyze Test"
       name: "Static analysis"
       script: flutter analyze --no-current-package lib  
-    - stage: widgets
+    - stage: "Widget Tests"
       name: "Widget tests"                  
       script: flutter test
 
 stages:
-  - analyze
-  - widgets
+  - "Analyze Test"
+  - "Widget Tests"
 
 # Only building master means that we don't run two builds for each pull request.
 branches:
