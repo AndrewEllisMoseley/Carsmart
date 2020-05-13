@@ -19,12 +19,6 @@ before_install:
 after_install:
   - cd ../../
 
-before_script:
-  - cd "CS Mobile/mobile/"  
-
-after_script:
-  - cd ../../
-
 install:
   - git clone https://github.com/flutter/flutter.git -b $FLUTTER_CHANNEL
   - export PATH="$PATH:`pwd`/flutter/bin/cache/dart-sdk/bin"
