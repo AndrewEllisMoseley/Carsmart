@@ -64,9 +64,6 @@ jobs:
         - adb devices
         - adb shell input keyevent 82 &
       script:
-        # - cd "CS Mobile/mobile/"
-        # - $FLUTTER --version
-        # - $FLUTTER doctor
         - $FLUTTER_UP devices
         - $FLUTTER_UP driver --target=test_driver/app.dart
       
