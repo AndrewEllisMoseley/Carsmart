@@ -88,5 +88,5 @@ jobs:
     # - <<: *unit_tests
     - <<: *widget_tests
     # - <<: *integration_tests
-    - stage: "Build"
-    - stage: "Deploy"
+    # - stage: "Build"
+    # - stage: "Deploy"
