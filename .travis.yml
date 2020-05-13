@@ -24,7 +24,7 @@ install:
 
 static_analysis: &static_analysis
   name: "Static analysis"
-  script: flutter analyze lib
+  script: flutter analyze --no-current-package lib
 
 # Unit Tests
 unit_tests: &unit_tests
