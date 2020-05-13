@@ -1,4 +1,4 @@
-language: generic
+language: dart
 dist: xenial
 
 addons:
