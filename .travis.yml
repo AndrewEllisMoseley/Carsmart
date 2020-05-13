@@ -14,6 +14,8 @@ env:
     - ANDROID_API=28
 
 before_install: cd "CS Mobile/mobile/"
+before_script: cd "CS Mobile/mobile/"
+
 
 install:
   - git clone https://github.com/flutter/flutter.git -b $FLUTTER_CHANNEL
