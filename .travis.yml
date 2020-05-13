@@ -20,13 +20,9 @@ install:
   - flutter doctor -v
   - flutter packages get
 
-cache:
-  directories:
-    - $HOME/.pub-cache
-
 static_analysis: &static_analysis
   name: "Static analysis"
-  script: flutter analyze
+  script: flutter analyze --no-current-package lib
 
 # Unit Tests
 unit_tests: &unit_tests
@@ -93,3 +89,6 @@ jobs:
     - <<: *integration_tests
     # - stage: build
     # - stage: deploy
+cache:
+  directories:
+    - $HOME/.pub-cache
