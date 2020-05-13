@@ -1,4 +1,8 @@
 language: dart
+dart_task:
+  - test
+
+dartfmt: true
 dist: xenial
 
 addons:
@@ -22,7 +26,7 @@ install:
 
 static_analysis: &static_analysis
   name: "Static analysis"
-  script: flutter analyze --no-current-package lib
+  dartanalyzer: --fatal-warnings lib
 
 # Unit Tests
 unit_tests: &unit_tests
