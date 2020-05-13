@@ -7,6 +7,11 @@ addons:
   apt:
     packages:
       - libstdc++6
+env:
+  global:
+    - FLUTTER_CHANNEL=stable
+    - APP=mobile
+    - ANDROID_API=28
 
 before_install: cd "CS Mobile/mobile/"
 
@@ -28,7 +33,7 @@ jobs:
 
 stages:
   - analyze
-  - widgett
+  - widgets
 
 # Only building master means that we don't run two builds for each pull request.
 branches:
