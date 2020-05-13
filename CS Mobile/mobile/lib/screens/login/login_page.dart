@@ -8,8 +8,10 @@ import 'package:mobile/widgets/molecules/cCard.dart';
 class LoginPage extends StatelessWidget {
   const LoginPage({Key key}) : super(key: key);
 
-  static const headerText = ['Login'];
-  static const subText = ['Enter to following details to get access.'];
+  static const List<String> headerText = ['Login'];
+  static const List<String> subText = [
+    'Enter to following details to get access.'
+  ];
 
   static const Key loginKey = Key('login');
 
