@@ -2,7 +2,7 @@ language: dart
 dist: xenial
 
 # Custom configuration
-sudo: required
+sudo: false
 addons:
   apt:
     packages:
@@ -64,7 +64,7 @@ jobs:
         - adb devices
         - adb shell input keyevent 82 &
       script:
-        - cd "CS Mobile/mobile/"
+        # - cd "CS Mobile/mobile/"
         # - $FLUTTER --version
         # - $FLUTTER doctor
         - $FLUTTER_UP devices
@@ -93,4 +93,4 @@ branches:
 cache:
   bundler: true
   directories:
-    - "$HOME/.pub-cache"
+    - "$HOME/pub-cache"
