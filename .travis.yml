@@ -10,7 +10,6 @@ addons:
 env:
   global:
     - FLUTTER_CHANNEL=stable
-    - FLUTTER_UP=../flutter/bin/flutter
     - APP=mobile
     - ANDROID_API=28
 
@@ -70,8 +69,8 @@ jobs:
         - adb devices
         - adb shell input keyevent 82 &        
       script:
-        - $FLUTTER_UP devices
-        - $FLUTTER_UP driver --target=test_driver/app.dart
+        - flutter devices
+        - flutter driver --target=test_driver/app.dart
       
     - stage: "Widget Test Coverage"
       name: "Creating widget test coverage..."                  
