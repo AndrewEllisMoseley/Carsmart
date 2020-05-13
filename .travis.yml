@@ -1,11 +1,9 @@
 language: dart
-dart_task:
-  - test
-
-dartfmt: true
 dist: xenial
 
 addons:
+  sudo: required
+  chrome: stable
   apt:
     packages:
       - libstdc++6
@@ -26,7 +24,7 @@ install:
 
 static_analysis: &static_analysis
   name: "Static analysis"
-  dartanalyzer: --fatal-warnings lib
+  script: flutter analyze lib
 
 # Unit Tests
 unit_tests: &unit_tests
@@ -87,10 +85,16 @@ integration_tests: &integration_tests
 
 jobs:
   include:
-#     - stage: "Tests"
+    - <<: *widget_tests
     - <<: *static_analysis
     # - <<: *unit_tests
-    - <<: *widget_tests
-    # - <<: *integration_tests
-    # - stage: "Build"
-    # - stage: "Deploy"
+    # - <<: *integration_tests    
+
+branches:
+  only:
+    - master
+    - develop
+
+cache:
+  directories:
+    - "$HOME/.pub-cache"
