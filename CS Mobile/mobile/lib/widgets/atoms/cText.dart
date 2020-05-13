@@ -2,17 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:mobile/styles/styles.dart';
 
 class CText extends StatelessWidget {
-  final String text;
-  final Color textColour;
-  final double fontSize;
-  final FontWeight fontWeight;
-  final double padding;
-  final Alignment alignment;
-  final double left;
-  final double top;
-  final double bottom;
-  final double right;
-
   CText({
     @required this.text,
     this.textColour = kGreyText,
@@ -25,6 +14,17 @@ class CText extends StatelessWidget {
     this.bottom = 0.0,
     this.right = 0.0,
   });
+
+  final String text;
+  final Color textColour;
+  final double fontSize;
+  final FontWeight fontWeight;
+  final double padding;
+  final Alignment alignment;
+  final double left;
+  final double top;
+  final double bottom;
+  final double right;
 
   @override
   Widget build(BuildContext context) {

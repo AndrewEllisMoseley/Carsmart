@@ -3,14 +3,14 @@ import 'package:mobile/widgets/atoms/cHeader.dart';
 import 'package:mobile/widgets/atoms/cText.dart';
 
 class CCard extends StatelessWidget {
-  final double height;
-  final dynamic headerText;
-  final dynamic subText;
-
   CCard(
       {@required this.height,
       @required this.headerText,
       @required this.subText});
+
+  final double height;
+  final dynamic headerText;
+  final dynamic subText;
 
   @override
   Widget build(BuildContext context) {

@@ -4,9 +4,9 @@ import 'package:mobile/styles/styles.dart';
 import 'package:mobile/widgets/atoms/cText.dart';
 
 class CHero extends StatelessWidget {
-  final String text;
-
   CHero({@required this.text});
+
+  final String text;
 
   @override
   Widget build(BuildContext context) {

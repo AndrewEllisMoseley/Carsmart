@@ -2,6 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:mobile/styles/styles.dart';
 
 class CButton extends StatelessWidget {
+  CButton(
+      {@required this.key,
+      @required this.text,
+      @required this.redirect,
+      this.backgroundColor = kSecondaryColour,
+      this.textColour = kWhiteText});
+
   @override
   final Key key;
 
@@ -9,13 +16,6 @@ class CButton extends StatelessWidget {
   final String redirect;
   final Color backgroundColor;
   final Color textColour;
-
-  CButton(
-      {@required this.key,
-      @required this.text,
-      @required this.redirect,
-      this.backgroundColor = kSecondaryColour,
-      this.textColour = kWhiteText});
 
   @override
   Widget build(BuildContext context) {

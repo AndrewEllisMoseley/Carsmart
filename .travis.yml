@@ -26,7 +26,7 @@ cache:
 
 static_analysis: &static_analysis
   name: "Static analysis"
-  script: flutter analyze
+  script: flutter analyze --no-current-package lib
 
 # Unit Tests
 unit_tests: &unit_tests
@@ -90,6 +90,6 @@ jobs:
     - <<: *static_analysis
     # - <<: *unit_tests
     - <<: *widget_tests
-    - <<: *integration_tests
+    # - <<: *integration_tests
     # - stage: build
     # - stage: deploy
