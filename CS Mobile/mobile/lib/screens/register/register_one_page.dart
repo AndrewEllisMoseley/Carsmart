@@ -10,6 +10,9 @@ class RegisterOnePage extends StatelessWidget {
 
   static const headerText = ['Register'];
   static const subText = ['Enter to following details to get access.'];
+
+  static const Key nextKey = Key('next');
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,6 +34,8 @@ class RegisterOnePage extends StatelessWidget {
                       fieldLabel: 'First Name:',
                       fieldPlaceholder: 'John',
                       icon: Icon(Icons.email),
+                      fieldController: null,
+                      validator: () {},
                     ),
                     SizedBox(
                       height: 20.0,
@@ -39,11 +44,17 @@ class RegisterOnePage extends StatelessWidget {
                       fieldLabel: 'Last Name:',
                       fieldPlaceholder: 'Doe',
                       icon: Icon(Icons.pan_tool),
+                      fieldController: null,
+                      validator: () {},
                     ),
                     SizedBox(
                       height: 40.0,
                     ),
-                    CButton(text: 'NEXT', redirect: '/register-two'),
+                    CButton(
+                      text: 'NEXT',
+                      redirect: '/register-two',
+                      key: nextKey,
+                    ),
                     CLink(
                       text: 'Already have an account? Why not Login?',
                     ),

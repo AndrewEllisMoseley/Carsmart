@@ -11,6 +11,8 @@ class LoginPage extends StatelessWidget {
   static const headerText = ['Login'];
   static const subText = ['Enter to following details to get access.'];
 
+  static const Key loginKey = Key('login');
+
   static const Key login = Key('login');
   @override
   Widget build(BuildContext context) {
@@ -34,7 +36,7 @@ class LoginPage extends StatelessWidget {
                       fieldPlaceholder: 'Example@email.com',
                       icon: Icon(Icons.email),
                       fieldController: null,
-                      validator: null,
+                      validator: () {},
                     ),
                     SizedBox(
                       height: 20.0,
@@ -44,15 +46,16 @@ class LoginPage extends StatelessWidget {
                       fieldPlaceholder: 'Password',
                       icon: Icon(Icons.security),
                       fieldController: null,
-                      validator: null,
+                      validator: () {},
                     ),
                     SizedBox(
                       height: 40.0,
                     ),
                     CButton(
-                        text: 'LOGIN',
-                        redirect: '/vehicle-details',
-                        key: Key('login')),
+                      text: 'LOGIN',
+                      redirect: '/vehicle-details',
+                      key: loginKey,
+                    ),
                     CLink(
                       text: 'Don\'t have an account? Register for one!',
                     ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/screens/account/account_page.dart';
-import 'package:mobile/styles/constants.dart';
+import 'package:mobile/styles/styles.dart';
 
 class VehicleOverviewPage extends StatelessWidget {
   const VehicleOverviewPage({Key key}) : super(key: key);

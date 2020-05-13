@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobile/styles/constants.dart';
+import 'package:mobile/styles/styles.dart';
 
 class CLink extends StatelessWidget {
   final String text;
@@ -9,7 +9,7 @@ class CLink extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: new EdgeInsets.fromLTRB(0.0, 20.0, 0.0, 0.0),
+      padding: EdgeInsets.fromLTRB(0.0, 20.0, 0.0, 0.0),
       child: Align(
         alignment: Alignment.bottomLeft,
         child: Text(
