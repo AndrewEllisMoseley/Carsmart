@@ -45,10 +45,10 @@ widget_tests: &widget_tests
   script: flutter test
 
 # Widget Test Coverage
-widget_tests: &widget_tests
-  name: "Widget tests"
-  script: flutter test --coverage test/widget_test.dart
-  after_script: bash <(curl -s https://codecov.io/bash) -f coverage/lcov.info
+# widget_tests: &widget_tests
+#   name: "Widget tests"
+#   script: flutter test --coverage
+#   after_script: bash <(curl -s https://codecov.io/bash) -f coverage/lcov.info
 
 # Integration Tests
 integration_tests: &integration_tests
