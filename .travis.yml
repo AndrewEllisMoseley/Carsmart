@@ -13,11 +13,12 @@ env:
     - APP=mobile
     - ANDROID_API=28
 
-before_install: cd "CS Mobile/mobile/"
+# before_install: cd "CS Mobile/mobile/"
 before_script: cd "CS Mobile/mobile/"
 
 
 install:
+  - cd "CS Mobile/mobile/"
   - git clone https://github.com/flutter/flutter.git -b $FLUTTER_CHANNEL
   - export PATH="$PATH:`pwd`/flutter/bin/cache/dart-sdk/bin"
   - export PATH="$PATH:`pwd`/flutter/bin"
@@ -89,7 +90,8 @@ branches:
     - master
     - develop
 
-cache:
-  bundler: true
+cache:  
   directories:
-    - "$HOME/pub-cache"
+    - $HOME/.cache/pip
+  before_cache:
+    - rm -f $HOME/.cache/pip/log/debug.log
