@@ -13,8 +13,8 @@ env:
     - APP=mobile
     - ANDROID_API=28
 
-before_install:
-  - cd "CS Mobile/mobile/"
+before_install: 
+  - cd "CS Mobile/mobile/"  
 
 after_install:
   - cd ../../
@@ -95,7 +95,7 @@ branches:
     - master
     - develop
 
-cache:
+cache:  
   directories:
     - $HOME/.cache/pip
   before_cache:
