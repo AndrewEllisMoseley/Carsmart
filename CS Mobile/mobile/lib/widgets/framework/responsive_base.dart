@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:mobile/utilities/sizing_information.dart';
 import 'package:mobile/utilities/ui_utils.dart';
 
-class BaseWidget extends StatelessWidget {
+class ResponsiveBaseWidget extends StatelessWidget {
   final Widget Function(
       BuildContext context, SizingInformation sizingInformation) builder;
-  const BaseWidget({Key key, this.builder}) : super(key: key);
+  const ResponsiveBaseWidget({Key key, this.builder}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
