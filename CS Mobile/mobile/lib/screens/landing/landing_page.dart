@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobile/widgets/framework/responsive_base.dart';
+import 'package:mobile/widgets/framework/responsive_builder.dart';
 
 import 'package:mobile/widgets/atoms/cButton.dart';
 import 'package:mobile/widgets/molecules/cCard.dart';
@@ -18,7 +18,7 @@ class LandingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ResponsiveBaseWidget(builder: (context, sizingInformation) {
+    return ResponsiveBuilder(builder: (context, sizingInformation) {
       return Scaffold(
         body: Container(
           constraints: BoxConstraints.expand(),
