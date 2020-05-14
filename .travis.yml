@@ -2,6 +2,8 @@ language: dart
 dist: xenial
 
 addons:
+  sudo: required
+  chrome: stable
   apt:
     packages:
       - libstdc++6
@@ -83,10 +85,16 @@ integration_tests: &integration_tests
 
 jobs:
   include:
-    - stage: "Tests"
+    - <<: *widget_tests
     - <<: *static_analysis
     # - <<: *unit_tests
-    - <<: *widget_tests
-    # - <<: *integration_tests
-    # - stage: "Build"
-    # - stage: "Deploy"
+    # - <<: *integration_tests    
+
+branches:
+  only:
+    - master
+    - develop
+
+cache:
+  directories:
+    - "$HOME/.pub-cache"
