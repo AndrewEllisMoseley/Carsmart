@@ -36,7 +36,7 @@ jobs:
       name: "Checking widgets..."
       script: flutter test test/widget_tests/
 
-    - stage: "Unit Test"
+    - stage: "Unit Tests"
       name: "Checking functions..."
       script: flutter test test/unit_tests/
 
