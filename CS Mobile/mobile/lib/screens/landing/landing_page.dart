@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/utilities/base_widget.dart';
 
 import 'package:mobile/widgets/atoms/cButton.dart';
 import 'package:mobile/widgets/molecules/cCard.dart';
@@ -17,37 +18,43 @@ class LandingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        constraints: BoxConstraints.expand(),
-        child: SafeArea(
-          child: Column(
-            children: <Widget>[
-              CCard(
-                height: 450.0,
-                headerText: headerText,
-                subText: subHeader,
-              ),
-              SizedBox(
-                height: 40.0,
-              ),
-              CButton(
-                text: 'LOGIN',
-                redirect: '/login',
-                key: loginKey,
-              ),
-              SizedBox(
-                height: 30.0,
-              ),
-              CButton(
-                text: 'REGISTER',
-                redirect: '/register-one',
-                key: registerKey,
-              ),
-            ],
+    return BaseWidget(builder: (context, sizingInformation) {
+      return Scaffold(
+        body: Container(
+          constraints: BoxConstraints.expand(),
+          child: SafeArea(
+            child: ListView(
+              children: <Widget>[
+                Column(
+                  children: <Widget>[
+                    CCard(
+                      height: MediaQuery.of(context).size.height * 0.75,
+                      headerText: headerText,
+                      subText: subHeader,
+                    ),
+                    SizedBox(
+                      height: 40.0,
+                    ),
+                    CButton(
+                      text: 'LOGIN',
+                      redirect: '/login',
+                      key: loginKey,
+                    ),
+                    SizedBox(
+                      height: 30.0,
+                    ),
+                    CButton(
+                      text: 'REGISTER',
+                      redirect: '/register-one',
+                      key: registerKey,
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
-      ),
-    );
+      );
+    });
   }
 }
