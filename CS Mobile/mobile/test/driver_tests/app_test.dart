@@ -27,10 +27,14 @@ void main() {
     // }
 
     // test('sign in anonymously, sign out', () async {
-    //   await driver.tap(find.text('Login'));
-    //   // print('About you click login');
-    //   // await driver.tap(find.text('Login'));
-    //   print('Login clicked');
+    //   // 1. find and tap anonymous sign in button
+    //   final anonymousSignInButton = find.byValueKey('login');
+    //   // 2. check to fail early if the auth state is authenticated
+    //   await driver.waitFor(anonymousSignInButton);
+    //   // 3. add small delay for demo recording
+    //   await delay(750);
+    //   // 4. interact with UI
+    //   await driver.tap(anonymousSignInButton);
     // });
   });
 }
