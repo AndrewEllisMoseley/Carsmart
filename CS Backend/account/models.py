@@ -1,24 +1,14 @@
 import uuid
 
 from django.db import models
-from django.core.mail import send_mail
-from django.contrib.auth.models import AbstractUser
-from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
+from django.core.mail import send_mail
+from django.utils.translation import ugettext_lazy as _
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
-class Account(AbstractUser):
-    username = models.CharField(max_length=30, blank=True, null=True)
-    email = models.EmailField(_('email address'), unique=True)
-
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
-
-    def __str__(self):
-        return "{}".format(self.email)
-
-
-class AccountProfile(models.Model):
+class Account(models.Model):
     TITLE_CHOICES = (
         ('mr', 'MR'),
         ('mrs', 'MRS'),
@@ -55,7 +45,7 @@ class AccountProfile(models.Model):
     )
 
     uuid = models.UUIDField(_('uuid'), primary_key=True, default=uuid.uuid4, editable=False)
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='account')
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(_('title'), max_length=4, choices=TITLE_CHOICES, blank=True)
     first_name = models.CharField(_('first name'), max_length=50)
     middle_name = models.CharField(_('middle_name'), max_length=50, blank=True, null=True)
@@ -66,9 +56,21 @@ class AccountProfile(models.Model):
     company = models.CharField(_('company'), max_length=3, choices=COMPANY_CHOICES)
     status = models.CharField(_('status'), max_length=1, choices=STATUS_TYPES, default='P')
     admin = models.BooleanField(_('admin'), default=False)
-    avatar = models.ImageField(_('avatar'), upload_to='avatars/', null=True, blank=True)
+    # avatar = models.ImageField(_('avatar'), upload_to='avatars/', null=True, blank=True)
     created_date = models.DateTimeField(_('created date'), auto_now_add=True)
     modified_date = models.DateTimeField(_('modified date'), auto_now_add=True)
+
+    @receiver(post_save, sender=settings.AUTH_USER_MODEL)
+    def create_user_account(sender, instance, created, **kwargs):
+        if created:
+            Account.objects.create(user=instance)
+
+    @receiver(post_save, sender=settings.AUTH_USER_MODEL)
+    def save_user_account(sender, instance, **kwargs):
+        instance.account.save()
+
+    def __str__(self):
+        return "{}".format(self.user)
 
     def get_full_name(self):
         """
@@ -93,7 +95,7 @@ class AccountProfile(models.Model):
         """
         Returns pretty title name
         """
-        title = [row[1] for row in AccountProfile.TITLE_CHOICES if row[0] == self.title]
+        title = [row[1] for row in Account.TITLE_CHOICES if row[0] == self.title]
         if title:
             return title[0]
         return ''
@@ -102,7 +104,7 @@ class AccountProfile(models.Model):
         """
         Returns pretty job name
         """
-        job = [row[1] for row in AccountProfile.JOB_CHOICES if row[0] == self.job]
+        job = [row[1] for row in Account.JOB_CHOICES if row[0] == self.job]
         if job:
             return job[0]
         return ''
@@ -111,7 +113,7 @@ class AccountProfile(models.Model):
         """
         Returns pretty company name
         """
-        company = [row[1] for row in AccountProfile.COMPANY_CHOICES if row[0] == self.company]
+        company = [row[1] for row in Account.COMPANY_CHOICES if row[0] == self.company]
         if company:
             return company[0]
         return ''
@@ -120,7 +122,7 @@ class AccountProfile(models.Model):
         """
         Returns pretty status name
         """
-        status = [row[1] for row in AccountProfile.STATUS_TYPES if row[0] == self.status]
+        status = [row[1] for row in Account.STATUS_TYPES if row[0] == self.status]
         if status:
             return status[0]
         return ''
