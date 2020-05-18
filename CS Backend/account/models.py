@@ -1,8 +1,7 @@
 import uuid
 
 from django.db import models
-from django.conf import settings
-from django.core.mail import send_mail
+from authentication.models import User
 from django.utils.translation import ugettext_lazy as _
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -45,11 +44,11 @@ class Account(models.Model):
     )
 
     uuid = models.UUIDField(_('uuid'), primary_key=True, default=uuid.uuid4, editable=False)
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     title = models.CharField(_('title'), max_length=4, choices=TITLE_CHOICES, blank=True)
-    first_name = models.CharField(_('first name'), max_length=50)
+    first_name = models.CharField(_('first name'), max_length=50, blank=True, null=True)
     middle_name = models.CharField(_('middle_name'), max_length=50, blank=True, null=True)
-    last_name = models.CharField(_('last name'), max_length=50)
+    last_name = models.CharField(_('last name'), max_length=50, blank=True, null=True)
     date_of_birth = models.DateField(_('date of birth'), null=True)
     phone_number = models.CharField(_('phone number'), max_length=12, blank=True, null=True)
     job = models.CharField(_('job'), max_length=15, choices=JOB_CHOICES, blank=True)
@@ -60,14 +59,20 @@ class Account(models.Model):
     created_date = models.DateTimeField(_('created date'), auto_now_add=True)
     modified_date = models.DateTimeField(_('modified date'), auto_now_add=True)
 
-    @receiver(post_save, sender=settings.AUTH_USER_MODEL)
+    @receiver(post_save, sender=User)
     def create_user_account(sender, instance, created, **kwargs):
         if created:
             Account.objects.create(user=instance)
 
-    @receiver(post_save, sender=settings.AUTH_USER_MODEL)
+    @receiver(post_save, sender=User)
     def save_user_account(sender, instance, **kwargs):
+        instance.account.first_name = instance.first_name
+        instance.account.last_name = instance.last_name
+        instance.account.company = instance.company
+        instance.account.job = instance.job
         instance.account.save()
+
+    post_save.connect(create_user_account, sender='authentication.User')
 
     def __str__(self):
         return "{}".format(self.user)
@@ -126,9 +131,3 @@ class Account(models.Model):
         if status:
             return status[0]
         return ''
-
-    def email_user(self, subject, message, from_email=None, **kwargs):
-        """
-        Sends an email to this User.
-        """
-        send_mail(subject, message, from_email, [self.email], **kwargs)
