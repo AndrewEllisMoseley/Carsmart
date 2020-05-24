@@ -1,0 +1,42 @@
+name: app
+description: Carsmart mobile application.
+
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  bloc: ^3.0.0
+  flutter_bloc: ^3.1.0
+  equatable: ^1.0.2
+  http: ^0.12.1
+  shared_preferences: ^0.4.0
+  jaguar_jwt: ^2.1.6
+  flutter_spinkit: ^4.1.2+1
+  font_awesome_flutter: ^8.8.1
+  device_preview:
+  provider:
+  device_info: ^0.4.2+4
+  json_serializable: ^2.0.2
+
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^0.1.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  test: any
+  pedantic: ^1.4.0
+  build_runner: ^1.2.7
+  effective_dart: ^1.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - lib/assets/
