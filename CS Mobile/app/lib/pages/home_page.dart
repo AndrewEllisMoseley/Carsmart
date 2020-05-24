@@ -1,43 +1,115 @@
 import 'package:app/blocs/authentication/authentication.dart';
+import 'package:app/models/vehicle.dart';
+import 'package:app/services/mercedes_service.dart';
+import 'package:app/styles/styles.dart';
+import 'package:app/wigets/custom_header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../models/models.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   final User user;
 
   const HomePage({Key key, this.user}) : super(key: key);
 
   @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int _selectedIndex = 1;
+  Vehicle vehicle = new Vehicle();
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  _getVehicleDetails() async {
+    setState(() async {
+      dynamic vehicleResponse = await mercedesService.getLocation();
+      Vehicle.fromJson(vehicleResponse);
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _getVehicleDetails();
+    print(vehicle.id);
+  }
+
+  static List<Widget> _widgetOptions = <Widget>[
+    Text('Request form'),
+    Text('Vehicle Details'),
+    Text('Access Page'),
+  ];
+
+  @override
   Widget build(BuildContext context) {
     final authBloc = BlocProvider.of<AuthenticationBloc>(context);
+
+    // ignore_for_file: unused_element
+    void dispose() {
+      authBloc.close();
+    }
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home Page'),
+        automaticallyImplyLeading: false,
+        title: CustomHeader(
+          text: 'Overview',
+        ),
+        backgroundColor: kWhiteText,
+        elevation: 0.0,
+        actions: <Widget>[
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0, 0, 20, 10),
+            child: IconButton(
+              icon: Icon(
+                Icons.account_circle,
+                color: kPrimaryColour,
+                size: 45.0,
+              ),
+              onPressed: () {
+                Navigator.push<dynamic>(
+                  context,
+                  MaterialPageRoute<dynamic>(
+                    builder: (context) => null,
+                  ),
+                );
+              },
+            ),
+          )
+        ],
       ),
       body: SafeArea(
         minimum: const EdgeInsets.all(16),
         child: Center(
-          child: Column(
-            children: <Widget>[
-              Text(
-                'Welcome, ${user.firstName}',
-                style: TextStyle(fontSize: 24),
-              ),
-              const SizedBox(
-                height: 12,
-              ),
-              TextFormField(),
-              FlatButton(
-                textColor: Theme.of(context).primaryColor,
-                child: Text('Logout'),
-                onPressed: () {
-                  authBloc.add(UserLoggedOut());
-                },
-              )
-            ],
-          ),
+          child: _widgetOptions.elementAt(_selectedIndex),
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(FontAwesomeIcons.conciergeBell),
+            title: Text('Request'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(FontAwesomeIcons.car),
+            title: Text('Your vehicle'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(FontAwesomeIcons.carBattery),
+            title: Text('Access'),
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: kPrimaryColour,
+        selectedIconTheme: IconThemeData(size: 30.0),
+        onTap: _onItemTapped,
       ),
     );
   }

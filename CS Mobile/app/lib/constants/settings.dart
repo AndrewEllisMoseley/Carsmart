@@ -8,3 +8,12 @@ String accessTokenEndpoint =
 String refreshTokenEndpoint =
     'api/token/refresh/'; // Endpoint for refreshing the access token
 String registerUser = 'auth/users/'; // Endpoint for registering a new user
+
+// --------------------------------------------------------------------------------
+// Mercedes Developer API Endpoints
+// -------------------------------------------------------------------------------
+String mercedesBaseURL =
+    'https://api.mercedes-benz.com/experimental/connectedvehicle_tryout/v1/vehicles/';
+
+String dummyVehicleID = '1234567890ABCD1234';
+String dummyBearerToken = 'a1b2c3d4-a1b2-a1b2-a1b2-a1b2c3d4e5f6';

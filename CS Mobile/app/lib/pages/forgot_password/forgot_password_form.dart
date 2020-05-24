@@ -16,7 +16,6 @@ class ForgotPasswordForm extends StatefulWidget with Validatiors {
 
 class ForgotPasswordFormState extends State<ForgotPasswordForm> {
   final GlobalKey<FormState> _key = GlobalKey<FormState>();
-  final _passwordController = TextEditingController();
   final _emailController = TextEditingController();
   bool _autoValidate = false;
 
@@ -37,6 +36,11 @@ class ForgotPasswordFormState extends State<ForgotPasswordForm> {
 
     _userToLogin() {
       _forgotPasswordBloc.add(UserBackToLogin());
+    }
+
+    // ignore_for_file: unused_element
+    void dispose() {
+      _forgotPasswordBloc.close();
     }
 
     return BlocListener<ForgotPasswordBloc, ForgotPasswordState>(

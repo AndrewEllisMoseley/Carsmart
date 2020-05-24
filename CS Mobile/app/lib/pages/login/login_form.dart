@@ -43,6 +43,11 @@ class LoginFormState extends State<LoginForm> {
       _loginBloc.add(UserToForgotPassword());
     }
 
+    // ignore_for_file: unused_element
+    void dispose() {
+      _loginBloc.close();
+    }
+
     return BlocListener<LoginBloc, LoginState>(
       listener: (context, state) {
         if (state is LoginFailure) {

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:app/exceptions/exceptions.dart';
 import 'package:app/models/models.dart';
 import 'package:http/http.dart' as http;
@@ -46,6 +47,21 @@ class HttpService {
       print('error $error');
       throw AuthenticationException(message: error);
     });
+  }
+
+  Future<dynamic> httpGetWithBearer(String url, String bearer) async {
+    print(url);
+    var headers = {
+      'accept': 'application/json',
+      'authorization': 'Bearer a1b2c3d4-a1b2-a1b2-a1b2-a1b2c3d4e5f6',
+    };
+    final response = await http.get(url, headers: headers);
+    if (response.statusCode != 200) {
+      throw Exception('http.get error: statusCode= ${response.statusCode}');
+    }
+
+    final responseJson = json.decode(response.body);
+    return responseJson;
   }
 
   /// ----------------------------------------------------------

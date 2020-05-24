@@ -69,6 +69,11 @@ class RegisterFormState extends State<RegisterForm> {
       _registerBloc.add(UserToLogin());
     }
 
+    // ignore_for_file: unused_element
+    void dispose() {
+      _registerBloc.close();
+    }
+
     return BlocListener<RegisterBloc, RegisterState>(
       listener: (context, state) {
         if (state is RegisterFailure) {
