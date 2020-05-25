@@ -1,12 +1,14 @@
+import 'package:app/models/vehicle.dart';
+import 'package:app/pages/vehicle/vehicle_details_page.dart';
 import 'package:app/styles/styles.dart';
 import 'package:app/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 
 class Vehicles extends StatelessWidget {
-  Vehicles({@required this.description, @required this.model});
+  Vehicles({@required this.vehicle, this.modelYear});
 
-  final String description;
-  final String model;
+  final Vehicle vehicle;
+  final String modelYear;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -30,7 +32,9 @@ class Vehicles extends StatelessWidget {
                     Navigator.push<dynamic>(
                       context,
                       MaterialPageRoute<dynamic>(
-                        builder: (context) => null,
+                        builder: (context) => VehicleDetailsPage(
+                          vehicle: vehicle,
+                        ),
                       ),
                     );
                   },
@@ -47,14 +51,14 @@ class Vehicles extends StatelessWidget {
                   child: Image.asset('lib/assets/merc.png'),
                 ),
                 CustomText(
-                  text: description,
+                  text: vehicle.salesdesignation,
                   textColour: kBlackText,
                   fontSize: 24.0,
                   fontWeight: FontWeight.bold,
                   alignment: Alignment.center,
                 ),
                 CustomText(
-                  text: 'Model Year: $model',
+                  text: 'Model Year: $modelYear',
                   alignment: Alignment.center,
                 ),
               ],

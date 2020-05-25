@@ -73,7 +73,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
       yield RegisterFailure(error: e.message);
     } catch (err) {
       print('error $err');
-      yield RegisterFailure(error: err.message ?? 'An unknown error occured');
+      yield RegisterFailure(error: err ?? 'An unknown error occured');
     }
   }
 

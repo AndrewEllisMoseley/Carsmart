@@ -1,4 +1,3 @@
-import 'package:app/constants/settings.dart';
 import 'package:app/models/vehicle.dart';
 import 'package:app/models/vehicle_location.dart';
 import 'package:app/services/mercedes_service.dart';
@@ -129,8 +128,8 @@ class _VehicleDetailsState extends State<VehicleDetails> {
             text: 'Good news. You\'re vehicle has been assigned',
           ),
           Vehicles(
-            description: vehicle.salesdesignation,
-            model: vehicle.modelyear,
+            vehicle: vehicle,
+            modelYear: vehicle.modelyear,
           ),
           RegistrationBox(
             registration: vehicle.licenseplate,

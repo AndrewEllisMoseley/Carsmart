@@ -53,7 +53,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       yield LoginFailure(error: e.message);
     } catch (err) {
       print('error $err');
-      yield LoginFailure(error: err.message ?? 'An unknown error occured');
+      yield LoginFailure(error: err);
     }
   }
 
