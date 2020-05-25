@@ -1,4 +1,4 @@
-import 'package:app/wigets/custom_link.dart';
+import 'package:app/widgets/custom_link.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter/material.dart';
 

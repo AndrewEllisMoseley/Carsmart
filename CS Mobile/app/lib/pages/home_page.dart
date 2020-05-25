@@ -1,8 +1,7 @@
 import 'package:app/blocs/authentication/authentication.dart';
-import 'package:app/models/vehicle.dart';
-import 'package:app/services/mercedes_service.dart';
 import 'package:app/styles/styles.dart';
-import 'package:app/wigets/custom_header.dart';
+import 'package:app/widgets/custom_header.dart';
+import 'package:app/widgets/vehicle_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -19,31 +18,15 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 1;
-  Vehicle vehicle = new Vehicle();
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
   }
 
-  _getVehicleDetails() async {
-    setState(() async {
-      dynamic vehicleResponse = await mercedesService.getLocation();
-      Vehicle.fromJson(vehicleResponse);
-    });
-  }
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    _getVehicleDetails();
-    print(vehicle.id);
-  }
-
   static List<Widget> _widgetOptions = <Widget>[
     Text('Request form'),
-    Text('Vehicle Details'),
+    VehicleDetails(),
     Text('Access Page'),
   ];
 
@@ -66,7 +49,7 @@ class _HomePageState extends State<HomePage> {
         elevation: 0.0,
         actions: <Widget>[
           Padding(
-            padding: const EdgeInsets.fromLTRB(0, 0, 20, 10),
+            padding: const EdgeInsets.only(right: 16),
             child: IconButton(
               icon: Icon(
                 Icons.account_circle,
@@ -74,19 +57,14 @@ class _HomePageState extends State<HomePage> {
                 size: 45.0,
               ),
               onPressed: () {
-                Navigator.push<dynamic>(
-                  context,
-                  MaterialPageRoute<dynamic>(
-                    builder: (context) => null,
-                  ),
-                );
+                authBloc.add(UserLoggedOut());
               },
             ),
           )
         ],
       ),
       body: SafeArea(
-        minimum: const EdgeInsets.all(16),
+        // minimum: const EdgeInsets.all(16),
         child: Center(
           child: _widgetOptions.elementAt(_selectedIndex),
         ),

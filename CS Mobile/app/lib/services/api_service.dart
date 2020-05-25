@@ -13,39 +13,37 @@ class HttpService {
 
   Future<dynamic> httpGet(String url) {
     return _client.get(url).then<dynamic>((http.Response response) {
-      final String res = response.body;
+      final String data = response.body;
       final int statusCode = response.statusCode;
 
-      if (statusCode < 200 || statusCode > 400 || json == null) {
+      if (statusCode < 200 || statusCode > 400 || data == null) {
         throw Exception("Error while fetching data");
       }
-      return _decoder.convert(res);
+      return json.decode(data);
     });
   }
 
   Future<dynamic> httpPost(String url,
       {Map<String, String> headers, dynamic body, Encoding encoding}) async {
-    print('before actual post');
-    return await _client
+    final response = await _client
         .post(url, body: body, headers: headers, encoding: encoding)
         .timeout(Duration(seconds: 5))
-        .then<dynamic>((http.Response response) {
-      final String res = response.body;
-      final int statusCode = response.statusCode;
-      if (statusCode < 200 || statusCode > 400 || json == null) {
-        dynamic error = _decoder.convert(res);
-        throw (error["detail"]);
-      }
-      if (statusCode == 400) {
-        dynamic error = _decoder.convert(res);
-        throw (error["email"][0]);
-      }
-      return _decoder.convert(res);
-    }).catchError((dynamic error, dynamic stackTrace) {
-      // error is SecondError
-      print('error $error');
+        .catchError((dynamic error, dynamic stackTrace) {
       throw AuthenticationException(message: error);
     });
+    final String data = response.body;
+    final int statusCode = response.statusCode;
+    if (statusCode < 200 || statusCode > 400 || data == null) {
+      dynamic error = _decoder.convert(data);
+      throw (error["detail"]);
+    }
+    if (statusCode == 400) {
+      dynamic error = _decoder.convert(data);
+      throw (error["email"][0]);
+    }
+
+    final responseJson = json.decode(response.body);
+    return responseJson;
   }
 
   Future<dynamic> httpGetWithBearer(String url, String bearer) async {
@@ -61,6 +59,19 @@ class HttpService {
 
     final responseJson = json.decode(response.body);
     return responseJson;
+  }
+
+  Future<dynamic> httpGetWithImage(String url) async {
+    print(url);
+    var headers = {
+      'accept': 'image/png',
+    };
+    final response = await http.get(url, headers: headers);
+    if (response.statusCode != 200) {
+      throw Exception('http.get error: statusCode= ${response.statusCode}');
+    }
+    print(response.body);
+    return response;
   }
 
   /// ----------------------------------------------------------
