@@ -76,6 +76,11 @@ SIMPLE_JWT = {
     'TOKEN_TYPE_CLAIM': 'token_type',
 }
 
+EMAIL_HOST = 'smtp.mailtrap.io'
+EMAIL_HOST_USER = 'c2f519aeb695e7'
+EMAIL_HOST_PASSWORD = 'c4dad963587fc2'
+EMAIL_PORT = '2525'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

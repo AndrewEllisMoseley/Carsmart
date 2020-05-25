@@ -10,14 +10,14 @@ addons:
 env:
   global:
     - FLUTTER_CHANNEL=stable
-    - APP=mobile
+    - APP=app
     - ANDROID_API=28
 
 notifications:
   slack: carsmarttalk:ebIR7RcS8prO79aX2K3zNmPM
 
 before_install:
-  - cd "CS Mobile/mobile/"
+  - cd "CS Mobile/app/"
 
 after_install:
   - cd ../../

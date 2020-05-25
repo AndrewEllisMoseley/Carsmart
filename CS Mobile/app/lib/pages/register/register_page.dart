@@ -13,6 +13,12 @@ class RegisterPage extends StatelessWidget {
             builder: (context, state) {
               print('did the page get called?');
               final authBloc = BlocProvider.of<AuthenticationBloc>(context);
+
+              // ignore_for_file: unused_element
+              void dispose() {
+                authBloc.close();
+              }
+
               if (state is AuthenticationNotAuthenticated ||
                   state is AuthenticationRegister) {
                 return AuthForm();

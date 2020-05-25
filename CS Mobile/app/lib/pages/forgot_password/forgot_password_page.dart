@@ -17,6 +17,11 @@ class ForgotPasswordPage extends StatelessWidget {
             builder: (context, state) {
               final authBloc = BlocProvider.of<AuthenticationBloc>(context);
 
+              // ignore_for_file: unused_element
+              void dispose() {
+                authBloc.close();
+              }
+
               if (state is AuthenticationNotAuthenticated ||
                   state is AuthenticationForgotPassword) {
                 return AuthForm();

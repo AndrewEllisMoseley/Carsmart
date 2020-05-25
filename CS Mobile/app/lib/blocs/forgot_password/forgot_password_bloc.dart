@@ -1,20 +1,19 @@
 import 'package:app/blocs/forgot_password/forgot_password.dart';
 import 'package:bloc/bloc.dart';
 import '../authentication/authentication.dart';
-import '../../exceptions/exceptions.dart';
 import '../../services/services.dart';
 
 class ForgotPasswordBloc
     extends Bloc<ForgotPasswordEvent, ForgotPasswordState> {
   final AuthenticationBloc _authenticationBloc;
-  final AuthenticationService _authenticationService;
+  // final AuthenticationService _authenticationService;
 
   ForgotPasswordBloc(AuthenticationBloc authenticationBloc,
       AuthenticationService authenticationService)
       : assert(authenticationBloc != null),
         assert(authenticationService != null),
-        _authenticationBloc = authenticationBloc,
-        _authenticationService = authenticationService;
+        _authenticationBloc = authenticationBloc;
+  // _authenticationService = authenticationService;
 
   @override
   ForgotPasswordState get initialState => ForgotPasswordInitial();

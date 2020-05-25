@@ -11,32 +11,34 @@ class CustomLink extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.bottomLeft,
-      child: Row(
-        children: <Widget>[
-          Text(
-            textOne,
-            style: TextStyle(
-              color: kGreyText,
-              fontFamily: 'Raleway',
-              fontSize: 14.0,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          InkWell(
-            onTap: redirect,
-            child: Text(
-              textTwo,
+    return Material(
+      child: Align(
+        alignment: Alignment.bottomLeft,
+        child: Row(
+          children: <Widget>[
+            Text(
+              textOne,
               style: TextStyle(
-                color: kSecondaryColour,
+                color: kGreyText,
                 fontFamily: 'Raleway',
                 fontSize: 14.0,
                 fontWeight: FontWeight.bold,
               ),
             ),
-          ),
-        ],
+            InkWell(
+              onTap: redirect,
+              child: Text(
+                textTwo,
+                style: TextStyle(
+                  color: kSecondaryColour,
+                  fontFamily: 'Raleway',
+                  fontSize: 14.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

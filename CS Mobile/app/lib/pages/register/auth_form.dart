@@ -11,6 +11,11 @@ class AuthForm extends StatelessWidget {
     final authService = RepositoryProvider.of<AuthenticationService>(context);
     final authBloc = BlocProvider.of<AuthenticationBloc>(context);
 
+    // ignore_for_file: unused_element
+    void dispose() {
+      authBloc.close();
+    }
+
     return Container(
       alignment: Alignment.center,
       child: BlocProvider<RegisterBloc>(

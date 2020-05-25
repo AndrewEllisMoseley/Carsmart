@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 
+// Main app colours
 const kPrimaryColour = Color(0xFF3EA0DD);
 const kSecondaryColour = Color(0xFF14718E);
 const kTertiaryColour = Color(0xFF034555);
+
+// Text Colours
 const kGreyText = Color(0xFF707070);
 const kLightGreyText = Color(0xFFDCDCDC);
 const kBlackText = Color(0xFF000000);
 const kWhiteText = Color(0xFFFFFFFF);
+
+// Appbar colours
+const kWhiteBacground = Color(0xFFFFFFFF);
 
 InputDecoration kTextFieldInputDecoration(
     String labelText, String hintText, Icon icon,

@@ -1,7 +1,7 @@
 from django.core.mail import send_mail
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext_lazy as _, override
 
 
 class User(AbstractUser):
@@ -54,7 +54,8 @@ class User(AbstractUser):
             return company[0]
         return ''
 
-    def email_user(self, subject, message, from_email=None, **kwargs):
+    @override
+    def email_user(self, subject, message, from_email='ellis.moseley1984@gmail.com', **kwargs):
         """
         Sends an email to this User.
         """

@@ -1,8 +1,8 @@
 class Companies {
-  List<String> companies = ['Admiral Group', 'AA Insurance', 'Veygo'];
+  List<String> _companies = ['Admiral Group', 'AA Insurance', 'Veygo'];
 
   List<String> getCompanies() {
-    return companies;
+    return _companies;
   }
 
   String getCompany(company) {

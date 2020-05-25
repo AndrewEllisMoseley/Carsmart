@@ -17,6 +17,11 @@ class LoginPage extends StatelessWidget {
             builder: (context, state) {
               final authBloc = BlocProvider.of<AuthenticationBloc>(context);
 
+              // ignore_for_file: unused_element
+              void dispose() {
+                authBloc.close();
+              }
+
               if (state is AuthenticationNotAuthenticated ||
                   state is AuthenticationLogin) {
                 return AuthForm();
