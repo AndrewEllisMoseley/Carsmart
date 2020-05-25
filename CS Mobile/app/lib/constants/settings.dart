@@ -17,3 +17,5 @@ String mercedesBaseURL =
 
 String dummyVehicleID = '1234567890ABCD1234';
 String dummyBearerToken = 'a1b2c3d4-a1b2-a1b2-a1b2-a1b2c3d4e5f6';
+
+String dummyImageValue = 'WDD2132231A444556';

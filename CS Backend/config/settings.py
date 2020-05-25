@@ -56,8 +56,8 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-        # 'rest_framework.authentication.SessionAuthentication',
-        # 'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
     ),  #
 }
 
@@ -75,11 +75,6 @@ SIMPLE_JWT = {
     'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
     'TOKEN_TYPE_CLAIM': 'token_type',
 }
-
-EMAIL_HOST = 'smtp.mailtrap.io'
-EMAIL_HOST_USER = 'c2f519aeb695e7'
-EMAIL_HOST_PASSWORD = 'c4dad963587fc2'
-EMAIL_PORT = '2525'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

@@ -1,4 +1,4 @@
-import 'package:app/wigets/hero_header.dart';
+import 'package:app/widgets/hero_header.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter/material.dart';
 

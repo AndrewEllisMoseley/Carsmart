@@ -1,6 +1,6 @@
 import 'package:app/blocs/authentication/authentication.dart';
 import 'package:app/styles/styles.dart';
-import 'package:app/wigets/custom_text.dart';
+import 'package:app/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';

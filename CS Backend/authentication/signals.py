@@ -9,5 +9,3 @@ from .models import User
 def create_profile(sender, instance, created, **kwargs):
     if created:
         User.objects.create(user=instance)
-        User.email_user(instance, 'Account Registered', 'Welcome to Carsmart! \n Your account has been created, '
-                                                        'simply head back over to the app and get started.')

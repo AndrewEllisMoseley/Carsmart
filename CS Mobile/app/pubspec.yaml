@@ -24,7 +24,7 @@ dependencies:
   provider:
   device_info: ^0.4.2+4
   json_serializable: ^2.0.2
-
+  transparent_image: ^1.0.0
   cupertino_icons: ^0.1.2
 
 dev_dependencies:

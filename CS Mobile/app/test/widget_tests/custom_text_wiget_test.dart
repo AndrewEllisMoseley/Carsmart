@@ -1,5 +1,5 @@
 import 'package:app/styles/styles.dart';
-import 'package:app/wigets/custom_text.dart';
+import 'package:app/widgets/custom_text.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter/material.dart';
 
