@@ -34,4 +34,4 @@ String doors = '/doors';
 String mapBaseURL = 'https://maps.googleapis.com/maps/api/staticmap?';
 String marker =
     '&zoom=13&size=600x300&maptype=roadmap&markers=color:red%7Clabel:.%7C';
-String key = '&key=AIzaSyBZeFuOWJE02iK9Ck7s_FyAS6Kw-l-Jntk';
+String key = '&key=';
