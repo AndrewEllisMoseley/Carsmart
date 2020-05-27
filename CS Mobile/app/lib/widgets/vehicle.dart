@@ -9,6 +9,7 @@ class Vehicles extends StatelessWidget {
 
   final Vehicle vehicle;
   final String modelYear;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(

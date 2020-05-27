@@ -5,14 +5,14 @@ import '../../services/services.dart';
 
 class SplashBloc extends Bloc<SplashEvent, SplashState> {
   final AuthenticationBloc _authenticationBloc;
-  final AuthenticationService _authenticationService;
+  // final AuthenticationService _authenticationService;
 
   SplashBloc(AuthenticationBloc authenticationBloc,
       AuthenticationService authenticationService)
       : assert(authenticationBloc != null),
         assert(authenticationService != null),
-        _authenticationBloc = authenticationBloc,
-        _authenticationService = authenticationService;
+        _authenticationBloc = authenticationBloc;
+  // _authenticationService = authenticationService;
 
   @override
   SplashState get initialState => SplashInitial();
