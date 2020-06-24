@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:app/config/settings.dart';
 import 'package:app/exceptions/exceptions.dart';
 import 'package:app/models/models.dart';
 import 'package:http/http.dart' as http;
@@ -39,26 +40,48 @@ class HttpService {
     }
     if (statusCode == 400) {
       dynamic error = _decoder.convert(data);
-      throw (error["email"][0]);
+      throw AuthenticationException(message: error["email"][0]);
     }
 
-    final responseJson = json.decode(response.body);
-    return responseJson;
+    return json.decode(response.body);
   }
 
   Future<dynamic> httpGetWithBearer(String url, String bearer) async {
-    print(url);
     var headers = {
       'accept': 'application/json',
-      'authorization': 'Bearer a1b2c3d4-a1b2-a1b2-a1b2-a1b2c3d4e5f6',
+      'authorization': 'Bearer $accessToken',
     };
-    final response = await http.get(url, headers: headers);
+    final response = await http.get(
+      url,
+      headers: headers,
+    );
+    if (response.statusCode != 200) {
+      dynamic error = _decoder.convert(response.body);
+      throw AuthenticationException(message: error["reason"]);
+    }
+
+    return json.decode(response.body);
+  }
+
+  Future<dynamic> httpPostWithBearer(
+      String url, String bearer, dynamic body) async {
+    var headers = {
+      'accept': 'application/json',
+      'authorization': 'Bearer $accessToken',
+    };
+    print(url);
+    print(bearer);
+    print(body);
+    final response = await http.post(
+      url,
+      headers: headers,
+      body: body,
+    );
     if (response.statusCode != 200) {
       throw Exception('http.get error: statusCode= ${response.statusCode}');
     }
 
-    final responseJson = json.decode(response.body);
-    return responseJson;
+    return json.decode(response.body);
   }
 
   Future<dynamic> httpGetWithImage(String url) async {
@@ -70,7 +93,6 @@ class HttpService {
     if (response.statusCode != 200) {
       throw Exception('http.get error: statusCode= ${response.statusCode}');
     }
-    print(response.body);
     return response;
   }
 

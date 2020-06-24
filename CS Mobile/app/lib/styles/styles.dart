@@ -14,6 +14,9 @@ const kWhiteText = Color(0xFFFFFFFF);
 // Appbar colours
 const kWhiteBacground = Color(0xFFFFFFFF);
 
+const kSplashScreenBackground = Color(0xFF21BAFF);
+const kSplashScreenButton = Color(0xFF9BE7FF);
+
 InputDecoration kTextFieldInputDecoration(
     String labelText, String hintText, Icon icon,
     {FontWeight fontWeight = FontWeight.bold}) {

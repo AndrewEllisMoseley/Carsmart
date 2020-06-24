@@ -37,9 +37,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   Stream<LoginState> _mapLoginWithEmailToState(
       LoginInWithEmailButtonPressed event) async* {
     yield LoginLoading();
-    print('before try block');
     try {
-      print('before user call?');
       final user = await _authenticationService.signInWithEmailAndPassword(
           event.email, event.password);
       if (user != null) {
@@ -53,7 +51,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       yield LoginFailure(error: e.message);
     } catch (err) {
       print('error $err');
-      yield LoginFailure(error: err.message ?? 'An unknown error occured');
+      yield LoginFailure(error: err);
     }
   }
 

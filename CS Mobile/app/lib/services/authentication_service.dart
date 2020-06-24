@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:app/constants/settings.dart';
+import 'package:app/config/settings.dart';
 import 'package:app/services/services.dart';
 import 'package:jaguar_jwt/jaguar_jwt.dart';
 import '../models/models.dart';
@@ -30,7 +30,7 @@ class AuthService extends AuthenticationService {
   // ---------------------------------------------------------------------
   @override
   Future<User> signInWithEmailAndPassword(String email, String password) async {
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(Duration(seconds: 3));
     dynamic jwtData = await accessToken(email, password);
     dynamic userJsonData = decodeJWT(jwtData.toString());
     return User.fromJson(userJsonData);
@@ -60,6 +60,7 @@ class AuthService extends AuthenticationService {
   Future<User> completeRegistration(String firstName, String lastName,
       String company, String job, String email, String password) async {
     String url = '$baseURL$registerUser';
+    print('$firstName, $lastName, $company, $job, $email, $password');
     await Future.delayed(Duration(seconds: 5));
     await httpPost(url, body: {
       "username": firstName,

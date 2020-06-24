@@ -6,19 +6,23 @@ class CustomButton extends StatelessWidget {
       {@required this.text,
       this.backgroundColor = kSecondaryColour,
       this.textColour = kWhiteText,
-      @required this.onPressCallback});
+      @required this.onPressCallback,
+      this.width = 300.0,
+      this.height = 50.0});
 
   final String text;
   final Color backgroundColor;
   final Color textColour;
   final Function onPressCallback;
+  final double width;
+  final double height;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       color: Colors.transparent,
-      width: 300.0,
-      height: 50,
+      width: width,
+      height: height,
       child: FlatButton(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(5.0),

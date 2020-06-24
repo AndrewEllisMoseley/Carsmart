@@ -182,9 +182,25 @@ class LoginFormState extends State<LoginForm> {
   }
 
   void _showError(String error) {
-    Scaffold.of(context).showSnackBar(SnackBar(
-      content: Text(error),
-      backgroundColor: Theme.of(context).errorColor,
-    ));
+    Scaffold.of(context).showSnackBar(
+      SnackBar(
+        content: Container(
+          height: 25.0,
+          margin: EdgeInsets.all(4.0),
+          width: MediaQuery.of(context).size.width * 0.8,
+          child:
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+            Icon(
+              FontAwesomeIcons.exclamationTriangle,
+              color: kWhiteText,
+              size: 16.0,
+            ),
+            Text(' ' + error)
+          ]),
+        ),
+        backgroundColor: Theme.of(context).errorColor,
+        duration: Duration(seconds: 5),
+      ),
+    );
   }
 }
